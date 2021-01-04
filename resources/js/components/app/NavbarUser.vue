@@ -96,6 +96,7 @@ export default {
   methods: {
     logout() {
       localStorage.removeItem("token");
+      localStorage.removeItem("role");
       this.$router.push({ name: "Auth" });
     },
   },

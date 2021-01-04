@@ -1,5 +1,6 @@
 <template>
   <v-app style="background-color: #E0F7FA;">
+    <v-img src="https://i.ibb.co/LvhpfbG/white-background-with-hexagonal-line-pattern-design.jpg">
     <Navbar />
     <v-container  fluid>
       <v-row style="height: 100vh;"  justify="center">
@@ -8,25 +9,25 @@
             <v-window v-model="step">
               <v-window-item :value="1">
                 <v-row>
-                  <v-col cols="12" md="8">
+                  <v-col cols="12" md="8" style="background-color: #EEEEEE">
                     <v-card-text class="mt-12">
                       <h1 class="text-center display-2">
-                        <span style="color: #1b4188"> Sign in to codeSUM </span>
+                        <span style="color: #1b4188"> Dobrodošli na code<span class="font-weight-medium">SUM</span></span>
                       </h1>
                       <div class="text-center mt-4">
-                        <v-btn class="mx-2" fab small color="#1B4188">
-                          <v-icon>fab fa-facebook-f</v-icon>
+                        <v-btn icon>
+                          <v-icon color="#1B4188">fab fa-facebook-f</v-icon>
                         </v-btn>
-                        <v-btn class="mx-2" fab small color="#1B4188">
-                          <v-icon>fab fa-instagram</v-icon>
+                        <v-btn icon>
+                          <v-icon color="#1B4188">fab fa-instagram</v-icon>
                         </v-btn>
-                        <v-btn class="mx-2" fab small color="#1B4188">
-                          <v-icon>fab fa-youtube</v-icon>
+                        <v-btn icon>
+                          <v-icon color="#1B4188">fab fa-youtube</v-icon>
                         </v-btn>
                       </div>
                       <br />
                       <h4 class="text-center mlt-4">
-                        Enter your data for login
+                        Unesite svoje podatke za prijavu
                       </h4>
                       <v-form>
                         <v-text-field
@@ -54,24 +55,24 @@
                       </v-form>
                       <div class="text-right mt-3">
                       <p class="forgot-password text-right">
-                        <router-link to="forgot">Forgot password?</router-link>
+                        <router-link to="forgot">Zaboravili ste lozinku?</router-link>
                       </p>
                       </div>
                     </v-card-text>
                     <div class="text-center mt-3">
-                      <v-btn rounded color="#1B4188" dark @click.prevent="loginUser">SING IN</v-btn>
+                      <v-btn rounded color="#1B4188" dark @click.prevent="loginUser">Prijava</v-btn>
                     </div>
                   </v-col>
                   <v-col cols="12" md="4" style="background-color: #1b4188">
                     <v-card-text class="white--text mt-12">
-                      <h1 class="text-center display-1">Hello, Friend!</h1>
+                      <h1 class="text-center display-1">Hello, World!</h1>
                       <h5 class="text-center">
-                        Enter your pesonnal details and start journay with us
+                        Unesite svoje podatke i započnite putovanje sa nama :D
                       </h5>
                     </v-card-text>
                     <div class="text-center">
                       <v-btn rounded outlined dark @click="step++"
-                        >Register</v-btn
+                        >Registracija</v-btn
                       >
                     </div>
                   </v-col>
@@ -81,36 +82,35 @@
                 <v-row class="fill-height">
                   <v-col cols="12" md="4" style="background-color: #1b4188">
                     <v-card-text class="white--text mt-12">
-                      <h1 class="text-center display-1">Welcome Back!</h1>
+                      <h1 class="text-center display-1">Prijavite se!</h1>
                       <h5 class="text-center">
-                        To Keep connected with us please login with your
-                        personnal info
+                        Kako bi ste se prijavili molimo unesite svoje podatke 
                       </h5>
                     </v-card-text>
                     <div class="text-center">
                       <v-btn rounded outlined dark @click="step--"
-                        >SING IN</v-btn
+                        >Prijava</v-btn
                       >
                     </div>
                   </v-col>
-                  <v-col cols="12" md="8">
+                  <v-col cols="12" md="8" style="background-color: #EEEEEE">
                     <v-card-text class="mt-12">
                       <h1 class="text-center display-2">
-                        <span style="color: #1b4188"> Create Accaunt </span>
+                        <span style="color: #1b4188"> Napravite račun </span>
                       </h1>
                       <div class="text-center mt-4">
-                        <v-btn class="mx-2" fab small color="#1B4188">
-                          <v-icon>fab fa-facebook-f</v-icon>
+                        <v-btn icon>
+                          <v-icon color="#1B4188">fab fa-facebook-f</v-icon>
                         </v-btn>
-                        <v-btn class="mx-2" fab small color="#1B4188">
-                          <v-icon>fab fa-instagram</v-icon>
+                        <v-btn icon>
+                          <v-icon color="#1B4188">fab fa-instagram</v-icon>
                         </v-btn>
-                        <v-btn class="mx-2" fab small color="#1B4188">
-                          <v-icon>fab fa-youtube</v-icon>
+                        <v-btn icon>
+                          <v-icon color="#1B4188">fab fa-youtube</v-icon>
                         </v-btn>
                       </div>
                       <h4 class="text-center mt-4">
-                        Enter your data for registration
+                        Unesite svoje podatke za registraciju
                       </h4>
                       <v-form ref="registerForm" :value="formValid">
                         <v-text-field
@@ -161,7 +161,7 @@
                     </v-card-text>
                     <div class="text-center mt-n5">
                       <v-btn rounded color="#1B4188" dark @click.prevent="registerUser"
-                        >Register</v-btn
+                        >Registracija</v-btn
                       >
                     </div>
                   </v-col>
@@ -172,6 +172,7 @@
         </v-col>
       </v-row>
     </v-container>
+    </v-img>
 
     <!-- Snackbar -->
     <v-snackbar
@@ -274,7 +275,6 @@ export default {
       axios
         .post("http://localhost/codeSUM_projekt/public/api/login", this.user)
         .then((response) => {
-          console.log(response);
           localStorage.setItem('token', response.data.access_token)
           this.saveUserToken(response.data.access_token)
           this.setUserDetails()

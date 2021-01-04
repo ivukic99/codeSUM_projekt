@@ -12,6 +12,7 @@ import Profile from '../views/app/Profile.vue';
 import Home from '../views/app/Home.vue';
 import Stanko from '../views/creators/Stanko.vue';
 import Igor from '../views/creators/Igor.vue';
+import Admin from '../views/app/Admin.vue';
 
 import Middleware from '../middleware/index.js';
 
@@ -88,6 +89,14 @@ const routes = [
         component: Home,
         meta: {
             middleware: [Middleware.auth]
+        }
+    },
+    {
+        path: '/admin',
+        name: 'Admin',
+        component: Admin,
+        meta: {
+            middleware: [Middleware.admin]
         }
     },
     {

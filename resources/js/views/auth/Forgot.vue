@@ -1,14 +1,20 @@
 <template>
   <v-app style="background-color: #80d8ff" class="ml-0">
     <v-row justify="center" align="center">
-      <v-card class="mx-auto" width="450">
+      <v-card class="mx-auto" width="450" style="background-color: #eeeeee">
+        <span class="go-back">
+          <v-btn icon class="ml-2 mt-2" @click="goBack()">
+            <v-icon color="blue-grey darken-2">mdi-keyboard-backspace</v-icon>
+          </v-btn>
+        </span>
         <v-card-text>
           <v-form>
             <v-card-title>
               <h3 class="text-center">
-                <span style="color: #1b4188"> Forgot password </span>
+                <span style="color: #1b4188"> Zaboravili ste lozinku? </span>
               </h3>
             </v-card-title>
+            <v-card-subtitle>Unesite email za kreiranje nove lozinke!</v-card-subtitle>
             <v-text-field
               label="Email"
               name="Email"
@@ -18,15 +24,12 @@
               :rules="[rules.required, rules.email]"
             />
           </v-form>
-        
+
           <div class="mt-3 mb-3">
             <v-btn rounded color="#1B4188" block dark @click.prevent="forgotSubmit"
               >Pošalji email</v-btn
             >
           </div>
-          <p class="text-center">
-             Ne želim mijenjati lozinku. Klikni<router-link to="/"> ovdje.</router-link>
-          </p>
         </v-card-text>
       </v-card>
     </v-row>
@@ -75,6 +78,9 @@ export default {
     };
   },
   methods: {
+    goBack() {
+      return this.$router.go(-1);
+    },
     forgotSubmit() {
       axios
         .post("http://localhost/codeSUM_projekt/public/api/forgot", { email: this.email })

@@ -41,7 +41,8 @@ export default new Vuex.Store({
       axios.get('http://localhost/codeSUM_projekt/public/api/me', config)
       .then((response) => {
         commit('SET_USER_DETAILS', response.data)
-        console.log(response)
+        // console.log('+++++++++++++',response.data.details.roles[0].slug);
+        localStorage.setItem('role', response.data.details.roles[0].slug)
       })
       .catch((err) => {
         console.log(err)

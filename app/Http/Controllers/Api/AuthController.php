@@ -39,8 +39,8 @@ class AuthController extends Controller{
             'password' => Hash::make($request->password),
         ]);
 
-        if(substr($request->email, -6, ) == "sum.ba"){
-            $studentUserID = DB::table('roles')->where('slug', 'student')->get('id')->first();
+        if(substr($request->email, -3, ) == "com"){
+            $studentUserID = DB::table('roles')->where('slug', 'admin')->get('id')->first();
             $user->roles()->attach($studentUserID);
         }else{
             $externalUserID = DB::table('roles')->where('slug', 'external_user')->get('id')->first();

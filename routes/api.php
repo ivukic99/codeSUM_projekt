@@ -18,10 +18,10 @@ Route::middleware('auth:api')->get('/me', function (Request $request) {
     $user = $request->user();
     $user->roles;
 
-    return response()->json(["details" => $user]);
+    return (response()->json(["details" => $user]));
 });
 
-Route::post('/login', 'Api\AuthController@login')->name('api.login');
-Route::post('/register', 'Api\AuthController@register')->name('api.register');
+Route::post('/login', 'Api\AuthController@login')->name('login');
+Route::post('/register', 'Api\AuthController@register')->name('register');
 Route::post('/forgot', 'ForgotController@forgot')->name('forgot');
 Route::post('/reset', 'ForgotController@reset')->name('reset');

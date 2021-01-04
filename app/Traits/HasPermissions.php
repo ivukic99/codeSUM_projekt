@@ -2,13 +2,13 @@
 
 namespace App\Traits;
 
-use App\Permisson;
+use App\Permission;
 
 trait HasPermission{
 
     public function hasPermissionTo(...$permssions){
         return $this->permissions()->whereIn('slug', $permssions)->count() ||
-        $this->$roles()->whereHas('permissions', function($q) use ($permssions){
+        $this->roles()->whereHas('permissions', function($q) use ($permssions){
             $q->whereIn('slug', $permssions);
         })->count();
     }
