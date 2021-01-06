@@ -81,7 +81,6 @@ export default {
           token: this.$route.params.token,
         })
         .then((response) => {
-          console.log(response);
           this.$router.push({ name: "Pocetna" });
         });
     },

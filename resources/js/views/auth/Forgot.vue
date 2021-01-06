@@ -85,7 +85,6 @@ export default {
       axios
         .post("http://localhost/codeSUM_projekt/public/api/forgot", { email: this.email })
         .then((response) => {
-          console.log(response);
           if (response.data) {
             this.snackbar.show = true;
           }

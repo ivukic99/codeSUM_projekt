@@ -7,7 +7,7 @@
       ></v-app-bar-nav-icon>
 
       <v-toolbar-title class="light"
-        >code<span class="font-weight-medium">SUM</span></v-toolbar-title
+        > <v-icon color="white" size="28">mdi-iframe</v-icon> | code<span class="font-weight-medium">SUM</span></v-toolbar-title
       >
       <v-spacer></v-spacer>
 
