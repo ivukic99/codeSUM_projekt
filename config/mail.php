@@ -98,3 +98,15 @@ return [
     ],
 
 ];
+
+/* 
+---------------------------- Ovo je za env. file (postavke za gmail) --------------------------------
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.googlemail.com
+MAIL_PORT=587
+MAIL_USERNAME=igor.vukic@fpmoz.sum.ba
+MAIL_PASSWORD="cajodlimuna."
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=codeeSUM@sum.com
+MAIL_FROM_NAME="${APP_NAME}" */
+

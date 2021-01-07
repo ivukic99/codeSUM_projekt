@@ -4,14 +4,14 @@
       <v-card class="mx-auto" width="450">
         <v-card-title>
           <h3 class="text-center">
-            <span style="color: #1b4188"> Reset password </span>
+            <span style="color: #1b4188"> Promijenite lozinku </span>
           </h3>
         </v-card-title>
         <v-card-text>
           <v-form>
             <v-text-field
               id="password"
-              label="Unesite lozinku"
+              label="Unesite novu lozinku"
               name="password"
               :type="show1 ? 'text' : 'password'"
               color="#1B4188"
@@ -23,7 +23,7 @@
             />
             <v-text-field
               id="password"
-              label="Ponovite lozinku"
+              label="Ponovite novu lozinku"
               name="password"
               :type="show1 ? 'text' : 'password'"
               color="#1B4188"
@@ -36,7 +36,7 @@
           </v-form>
           <div class="mt-3">
             <v-btn rounded color="#1B4188" block dark @click.prevent="resetSubmit"
-              >Reset password</v-btn
+              >Potvrdi promjenu</v-btn
             >
           </div>
         </v-card-text>
