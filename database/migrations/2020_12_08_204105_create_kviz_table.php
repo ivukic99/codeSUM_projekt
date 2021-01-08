@@ -16,7 +16,7 @@ class CreateKvizTable extends Migration
         Schema::create('kviz', function (Blueprint $table) {
             $table->id()->unsigned();
             $table->string('Naziv', 50);
-            $table->unsignedBigInteger('Tecaj_id');
+            $table->unsignedBigInteger('Tecaj_id')->nullable();
             $table->timestamps();
 
             $table->foreign('Tecaj_id')->references('id')->on('tecaj');
