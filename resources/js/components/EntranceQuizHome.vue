@@ -4,17 +4,17 @@
 
       <div class="grid-container">
 
-          <div class="grid-child d-flex justify-center align-center" style="background: #eddcd2;">
+          <div class="first grid-child d-flex justify-center align-center" style="background: #eddcd2;">
               <v-img src="https://iili.io/KsmLB9.png" max-width="600px"></v-img>
           </div>
 
           <div class="grid-child d-flex justify-center align-center" style="background: #457b9d;">
               <div class="d-flex justify-center align-center flex-column" style=" max-width: 500px;">
                 <div>
-                  <p style="color: white; font-size: 20px; font-weight: bold; text-align: center;">Saznajte  koja karijera programiranja je za vas, koji programski jezici i smjerovi.</p>
+                  <p class="start-text">Saznajte  koja karijera programiranja je za vas, koji programski jezici i smjerovi.</p>
                 </div>
                 <div class="button-container d-flex justify-center">
-                  <v-btn rounded color="yellow" style="padding: 30px; width: 250px;"><span style="color: black; font-size: 18px;" @click="enterQuiz">Pokreni kviz</span></v-btn>
+                  <v-btn rounded color="yellow" class="start-button"><span class="button-text" @click="enterQuiz">Pokreni kviz</span></v-btn>
                 </div>
               </div>
           </div>
@@ -39,6 +39,24 @@ export default {
 </script>
 
 <style scoped>
+
+  .start-button{
+    padding: 30px !important;
+    width: 250px;
+  }
+
+  .button-text{
+    color: black; 
+    font-size: 18px;
+  }
+
+  .start-text{
+    color: white; 
+    font-size: 20px; 
+    font-weight: bold; 
+    text-align: center;
+  }
+
   .grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -51,5 +69,17 @@ export default {
   .button-container{
     width: 250px;
     padding: 30px;
+  }
+
+
+  @media only screen and (max-width: 992px) {
+    .first{
+      display: none !important;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
   }
 </style>

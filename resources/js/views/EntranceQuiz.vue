@@ -56,7 +56,7 @@ export default {
     		this.index--
     	},
       enterQuiz(){
-        this.entrance = true
+        this.entrance = !this.entrance
       }
     }
 }
