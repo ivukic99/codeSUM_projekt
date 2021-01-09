@@ -114,6 +114,9 @@ export default {
       this.$router.push({ name: "Auth" });
     },
   },
+  created(){
+      this.$store.dispatch('setUserDetails')
+  }
 };
 </script>
 

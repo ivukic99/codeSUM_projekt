@@ -12,7 +12,7 @@ import Profile from '../views/app/Profile.vue';
 import Home from '../views/app/Home.vue';
 import Stanko from '../views/creators/Stanko.vue';
 import Igor from '../views/creators/Igor.vue';
-import Admin from '../views/app/Admin.vue';
+import Admin from '../views/app/admin/Admin.vue';
 import EntranceQuiz from '../views/EntranceQuiz.vue';
 import EntranceQuizResults from '../views/EntranceQuizResults.vue';
 
