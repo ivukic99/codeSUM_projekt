@@ -8,11 +8,12 @@
        />
 
       <QuestionBox 
-      	v-if="getEntryQuestions.length && entrance"
+      	v-if="entrance"
       	:questions="getEntryQuestions"
       	:next="next"
       	:back="back"
       	:step="index"
+        :finishQuiz="finishQuiz"
       />
 
       
@@ -34,7 +35,7 @@ export default {
     	return{
     		index: 1,
     		score: 0,
-        entrance: false
+        entrance: false,
     	}
     },
     computed: {
@@ -46,17 +47,21 @@ export default {
     	this.$store.dispatch('setEntryQuestions')
     },
     methods:{
-    	next(selectedIndex){
+    	next(selectedIndex, answerValue){
     		this.index++
     		//Promijeniti kada se nadoda vrijesnost odgovra u bazi podataka
-    		if(selectedIndex == null) selectedIndex = 0
-    		this.score += selectedIndex
+    		if(answerValue == null) this.score += 0
+    		this.score += answerValue
+        console.log(this.score)
     	},
     	back(){
-    		this.index--
+    		this.$router.push({name: 'Naslovnica'})
     	},
       enterQuiz(){
         this.entrance = !this.entrance
+      },
+      finishQuiz(){
+        this.$router.push({ path: `/ulazni_kviz/rezultati/${this.score}` }) 
       }
     }
 }

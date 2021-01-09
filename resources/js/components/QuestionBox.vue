@@ -38,7 +38,7 @@
 
 	        <v-sheet>
 	        	<v-container class="pa-15">
-		        	<div v-for="(answer, idx) in question.answers" :key="idx" class="answer__button" @click = "selectAnswer(idx)" :class=" selectedIndex == idx ? 'selected' : '' ">
+		        	<div v-for="(answer, idx) in question.answers" :key="idx" class="answer__button" @click = "selectAnswer(idx, answer.Vrijednost)" :class=" selectedIndex == idx ? 'selected' : '' ">
 		        		{{ answer.Opis }}
 		        	</div>
 	        	</v-container>
@@ -47,30 +47,29 @@
 	        <div class="d-flex justify-end">
 	        	<v-btn
 	        	  v-if="question.step == steps"
-		          color="primary"
+		          color="#1B4188"
 		          @click="finishQuiz"
 		          class="mr-3"
 		        >
 		          Završi kviz
 		        </v-btn>
 		        <v-btn
-		          color="primary"
-		          @click="next(selectedIndex)"
+		          color="#1B4188"
+		          @click="next(selectedIndex, answerValue); clearVaribales()"
 		          class="mr-3"
+		          v-if="step != steps"
 		        >
 		          Sljedeće
 		        </v-btn>
 
 		        <v-btn @click="back" color="red">
-		          Nazad
+		          Odustani
 		        </v-btn>
 	        </div>
 	      </v-stepper-content>
 	    </v-stepper-items>
 	  </v-stepper>
 	</v-container>
-
-	<div v-if="finishedQuiz">Yey!!</div>
 
   </div>
 </template>
@@ -81,12 +80,13 @@ export default {
 		step: Number,
 		questions: Array,
 		next: Function,
-		back: Function
+		back: Function,
+		finishQuiz: Function
 	},
 	data () {
       return {
       	selectedIndex: null,
-      	finishedQuiz: false
+      	answerValue: null
       }
     },
     watch: {
@@ -104,15 +104,16 @@ export default {
     	}
     },
     methods:{
-    	selectAnswer(index){
+    	selectAnswer(index, answerValue){
     		this.selectedIndex = index
-    		console.log(index)
+    		this.answerValue = answerValue
+    		console.log(answerValue)
     	},
-    	finishQuiz(){
-    		console.log("Yey!!!")
-    		this.finishedQuiz = true 
+    	clearVaribales(){
+    		this.selectedIndex = null
+    		this.answerValue = null
     	}
-    },
+    }
 }
 </script>
 

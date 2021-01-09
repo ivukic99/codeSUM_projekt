@@ -126,7 +126,7 @@ const routes = [
         }
     },
     {
-        path: '/ulazni_kviz/rezultati',
+        path: '/ulazni_kviz/rezultati/:score',
         name: 'Entrance Quiz Results',
         component: EntranceQuizResults,
         meta: {
