@@ -4,7 +4,7 @@
     <Navbar />
     <v-container  fluid>
       <v-row style="height: 100vh;"  justify="center">
-        <v-col cols="12" sm="8" md="8">
+        <v-col cols="12" sm="8" md="8" class="d-flex align-center">
           <v-card class="elevation-12"> 
             <v-window v-model="step">
               <v-window-item :value="1">
