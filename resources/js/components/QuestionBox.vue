@@ -1,13 +1,15 @@
 <template>
   <div>
 
+  	{{ question }}
+
 	<v-container>
-	   <v-stepper v-model="e1">
+	   <v-stepper v-model="step">
 	    <v-stepper-header>
 	        <template v-for="n in steps">
 	          <v-stepper-step
 	            :key="`${n}-step`"
-	            :complete="e1 > n"
+	            :complete="step > n"
 	            :step="n"
 	            editable
 	          >
@@ -22,7 +24,7 @@
       	</v-stepper-header>
 
 	    <v-stepper-items>
-	      <v-stepper-content step='1'>
+	      <v-stepper-content v-for="(question, index) in questions" :key="index" :step="question.step">
 	        <v-card
 	          class="mb-12"
 	          color="grey lighten-1"
@@ -30,7 +32,7 @@
 	        >
 	        	<v-row style="height: 100%;">
 	        		<v-col cols="12" class="d-flex justify-center align-center" style="margin: 15px;">
-	        			<p class="text-h6">Ovo je neko pitanje iz baze podata CodeSUM?</p>
+	        			<p class="text-h6">{{ question.Opis }}</p>
 	        		</v-col>
 	        	</v-row>
 
@@ -38,23 +40,22 @@
 
 	        <v-sheet>
 	        	<v-container class="pa-15">
-		        	<div class="answer__button">Odgovor 1</div>
-		        	<div class="answer__button">Odgovor 2</div>
-		        	<div class="answer__button">Odgovor 3</div>
-		        	<div class="answer__button">Odgovor 4</div>
+		        	<div v-for="(answer, idx) in question.answers" :key="idx" class="answer__button" @click = "selectAnswer(idx)" :class=" selectedIndex == idx ? 'selected' : '' ">
+		        		{{ answer.Opis }}
+		        	</div>
 	        	</v-container>
 	        </v-sheet>
 
 	        <div class="d-flex justify-end">
 		        <v-btn
 		          color="primary"
-		          @click="e1 = 2"
+		          @click="next"
 		          class="mr-3"
 		        >
-		          Continue
+		          Continuee
 		        </v-btn>
 
-		        <v-btn color="red">
+		        <v-btn @click="back" color="red">
 		          Cancel
 		        </v-btn>
 	        </div>
@@ -68,11 +69,39 @@
 
 <script>
 export default {
+	props:{
+		step: Number,
+		questions: Array,
+		next: Function,
+		back: Function
+	},
 	data () {
       return {
-        e1: 1,
-        steps: 5
+      	selectedIndex: null,
+        question:{
+        	step: 1
+        }
       }
+    },
+    watch: {
+        questions:{
+            immediate: true,
+            handler(){
+                this.selectedIndex = null
+            }
+            
+        }
+    },
+    computed: {
+    	steps(){
+    		return this.questions[this.questions.length - 1].step
+    	}
+    },
+    methods:{
+    	selectAnswer(index){
+    		this.selectedIndex = index
+    		console.log(index)
+    	}
     },
 }
 </script>
@@ -85,5 +114,9 @@ export default {
 		text-align:center;
 		margin-top: 15px;
 		font-size: 20px;
+	}
+
+	.selected{
+		background: darkgrey;
 	}
 </style>

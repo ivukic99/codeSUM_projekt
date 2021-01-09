@@ -9,7 +9,8 @@ export default new Vuex.Store({
   state: {
       token: null,
       isUserLoggednIn: false,
-      userDetails: {}
+      userDetails: {},
+      entry_questions: []
   },
   getters:{
     getLogged(state){
@@ -17,6 +18,9 @@ export default new Vuex.Store({
     },
     getUserDetails(state){
       return state.userDetails
+    },
+    getEntryQuestions(state){
+      return state.entry_questions;
     }
   },
   mutations: {
@@ -27,6 +31,9 @@ export default new Vuex.Store({
     SET_USER_DETAILS(state, payload){
       state.userDetails = payload
       state.isUserLoggednIn = true
+    },
+    SET_ENTRY_QUESTIONS(state, payload){
+      state.entry_questions = payload;
     }
   },
   actions: {
@@ -43,6 +50,15 @@ export default new Vuex.Store({
         commit('SET_USER_DETAILS', response.data)
         // console.log('+++++++++++++',response.data.details.roles[0].slug);
         localStorage.setItem('role', response.data.details.roles[0].slug)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    },
+    setEntryQuestions({ commit }){
+      axios.get('http://localhost/codeSUM_projekt/public/api/entrance_quiz/1')
+      .then((response) => {
+        commit('SET_ENTRY_QUESTIONS', response.data.questions);
       })
       .catch((err) => {
         console.log(err)

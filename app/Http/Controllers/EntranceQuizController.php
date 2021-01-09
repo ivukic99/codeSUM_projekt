@@ -53,8 +53,14 @@ class EntranceQuizController extends Controller
 
         $questions = $quiz->getQuestions();
 
+        $counter = 1;
+
         foreach($questions as $question){
+
             $question->answers = $question->getAnswers();
+            $question->step = $counter;
+            $counter++;
+
         }
 
         return response()->json(['questions' => $questions]);
