@@ -16,7 +16,8 @@ class CreateOdgovoriTable extends Migration
         Schema::create('odgovori', function (Blueprint $table) {
             $table->id()->unsigned();
             $table->text('Opis');
-            $table->boolean('Istinitost');
+            $table->boolean('Istinitost')->nullable();
+            $table->integer('Vrijednost');
             $table->unsignedBigInteger('Pitanja_id');
             $table->timestamps();
 

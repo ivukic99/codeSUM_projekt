@@ -17,7 +17,6 @@ class CreatePitanjaTable extends Migration
             $table->id()->unsigned();
             $table->text('Opis');
             $table->unsignedBigInteger('Kviz_id');
-            $table->integer('vrijednost');
             $table->timestamps();
 
             $table->foreign('Kviz_id')->references('id')->on('kviz');
