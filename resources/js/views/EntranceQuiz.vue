@@ -2,8 +2,13 @@
   <div>
       <Navbar />
 
+      <EntranceQuizHome
+        :enterQuiz="enterQuiz"
+        v-show="entrance == false"
+       />
+
       <QuestionBox 
-      	v-if="getEntryQuestions.length"
+      	v-if="getEntryQuestions.length && entrance"
       	:questions="getEntryQuestions"
       	:next="next"
       	:back="back"
@@ -17,16 +22,19 @@
 <script>
 import Navbar from '../components/Navbar.vue';
 import QuestionBox from '../components/QuestionBox.vue';
+import EntranceQuizHome from '../components/EntranceQuizHome.vue';
 import { mapGetters } from 'vuex';
 export default {
     components: {
         Navbar,
-        QuestionBox
+        QuestionBox,
+        EntranceQuizHome
     },
     data(){
     	return{
     		index: 1,
-    		score: 0
+    		score: 0,
+        entrance: false
     	}
     },
     computed: {
@@ -46,7 +54,10 @@ export default {
     	},
     	back(){
     		this.index--
-    	}
+    	},
+      enterQuiz(){
+        this.entrance = true
+      }
     }
 }
 </script>

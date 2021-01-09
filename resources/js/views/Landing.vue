@@ -19,8 +19,7 @@
                         dark
                         block
                         class="mt-5"
-                        target="_blank"
-                        href="https://drive.google.com/file/d/1-2fdxNe3oGcpkGVqYTpBWFG8gaf64moV/view?usp=sharing"
+                        to="/ulazni_kviz"
                         >
                             Uradi kviz
                         </v-btn>

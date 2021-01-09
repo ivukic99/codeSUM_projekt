@@ -14,6 +14,7 @@ import Stanko from '../views/creators/Stanko.vue';
 import Igor from '../views/creators/Igor.vue';
 import Admin from '../views/app/Admin.vue';
 import EntranceQuiz from '../views/EntranceQuiz.vue';
+import EntranceQuizResults from '../views/EntranceQuizResults.vue';
 
 import Middleware from '../middleware/index.js';
 
@@ -120,6 +121,14 @@ const routes = [
         path: '/ulazni_kviz',
         name: 'Entrance Quiz',
         component: EntranceQuiz,
+        meta: {
+            middleware: [Middleware.guest]
+        }
+    },
+    {
+        path: '/ulazni_kviz/rezultati',
+        name: 'Entrance Quiz Results',
+        component: EntranceQuizResults,
         meta: {
             middleware: [Middleware.guest]
         }
