@@ -3,7 +3,7 @@
         <NavbarUser />
         
         <v-container>
-            {{ getUserDetails }}
+            {{ getUserDetails.details }}
         </v-container>
     </div>
 </template>

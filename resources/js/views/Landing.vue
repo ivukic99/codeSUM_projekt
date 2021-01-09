@@ -245,7 +245,7 @@
                   color="black"
                 >
                   <img
-                    src="https://scontent-vie1-1.xx.fbcdn.net/v/t1.0-9/99424225_2554190311459227_4308358059136122880_o.jpg?_nc_cat=111&ccb=2&_nc_sid=174925&_nc_eui2=AeFLrHAaSQ75nMT6p1jr6qKcMknXUxRAO0oySddTFEA7SkYM4_Omi8t6OTJMvmyuHIJODkF2tzTrPI7Pnau38QcU&_nc_ohc=fdEeJ1s79eUAX_PRsXB&_nc_ht=scontent-vie1-1.xx&oh=623f7816333fa3dc82a04f5b50e01a14&oe=5FF4B3DC"
+                    src="https://scontent-vie1-1.xx.fbcdn.net/v/t1.0-9/117708432_2620170331527891_5357806687406333131_o.jpg?_nc_cat=107&ccb=2&_nc_sid=09cbfe&_nc_eui2=AeE6qfD5eJ989ugw2A1CFSBLXU-Ttsh4wOtdT5O2yHjA6--hMvVbyiw5U2Yc_m-nxpKUyEZ9oX9TV7ccSpuGeSta&_nc_ohc=HvieFYPLmvEAX8rFMLA&_nc_oc=AQk-IxRvNrHLyl7zHsr6FNFjynVusMo6Bu779AQGy9G19fCKcasIdFsnJQqzsE75wGc&_nc_ht=scontent-vie1-1.xx&oh=ea464f89de086cfdb6a4fbe1a9ccab94&oe=601EF527"
                     alt="Stanko Bebek"
                   >
                 </v-avatar>

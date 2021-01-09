@@ -29,16 +29,17 @@
                   v-bind:src="
                     getUserDetails.img
                       ? getUserDetails.img
-                      : 'https://cdn.pixabay.com/photo/2012/04/26/19/43/profile-42914__340.png'
+                      : 'https://iili.io/Ks0S0N.png'
                   "
                   alt="CodeSUM user"
                 />
               </v-avatar>
               <div class="d-flex flex-column align-center justify-around pa-3">
-                <span class="white--text text-h6">{{ getUserDetails.name }}</span>
+                <span class="white--text text-h6">{{ getUserDetails.details ? getUserDetails.details.name  : ''}}</span>
                 <!--
                 <span class="white--text text-caption">{{ getUserDetails.role.type ? getUserDetails.role.type : 'Nije navedeno' }} | {{ getUserDetails.role.org ? getUserDetails.role.org : 'Nije navedno' }}</span>
                 -->
+                <span class="white--text text-subtitle-2">{{ getUserDetails.details ? sidebarUserInfo  : ''}}</span>
               </div>
             </div>
           </v-container>
@@ -92,6 +93,19 @@ export default {
   },
   computed: {
     ...mapGetters(["getUserDetails"]),
+    sidebarUserInfo(){
+
+      let roles = []
+
+      this.getUserDetails.details.roles.forEach( roleObj => {
+        roles.push(roleObj.slug)
+      })
+
+      if(roles.includes('admin')) return 'Administrator'
+
+      return 'Student'
+
+    }
   },
   methods: {
     logout() {
