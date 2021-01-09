@@ -1,8 +1,6 @@
 <template>
   <div>
 
-  	{{ question }}
-
 	<v-container>
 	   <v-stepper v-model="step">
 	    <v-stepper-header>
@@ -47,22 +45,32 @@
 	        </v-sheet>
 
 	        <div class="d-flex justify-end">
-		        <v-btn
+	        	<v-btn
+	        	  v-if="question.step == steps"
 		          color="primary"
-		          @click="next"
+		          @click="finishQuiz"
 		          class="mr-3"
 		        >
-		          Continuee
+		          Završi kviz
+		        </v-btn>
+		        <v-btn
+		          color="primary"
+		          @click="next(selectedIndex)"
+		          class="mr-3"
+		        >
+		          Sljedeće
 		        </v-btn>
 
 		        <v-btn @click="back" color="red">
-		          Cancel
+		          Nazad
 		        </v-btn>
 	        </div>
 	      </v-stepper-content>
 	    </v-stepper-items>
 	  </v-stepper>
 	</v-container>
+
+	<div v-if="finishedQuiz">Yey!!</div>
 
   </div>
 </template>
@@ -78,9 +86,7 @@ export default {
 	data () {
       return {
       	selectedIndex: null,
-        question:{
-        	step: 1
-        }
+      	finishedQuiz: false
       }
     },
     watch: {
@@ -101,6 +107,10 @@ export default {
     	selectAnswer(index){
     		this.selectedIndex = index
     		console.log(index)
+    	},
+    	finishQuiz(){
+    		console.log("Yey!!!")
+    		this.finishedQuiz = true 
     	}
     },
 }

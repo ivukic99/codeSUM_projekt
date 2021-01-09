@@ -2,8 +2,6 @@
   <div>
       <Navbar />
 
-      <h1>Ovo je ulazni kviz</h1>
-
       <QuestionBox 
       	v-if="getEntryQuestions.length"
       	:questions="getEntryQuestions"
@@ -11,8 +9,6 @@
       	:back="back"
       	:step="index"
       />
-
-      <v-container>{{ getEntryQuestions }}</v-container>
 
       
   </div>
@@ -30,6 +26,7 @@ export default {
     data(){
     	return{
     		index: 1,
+    		score: 0
     	}
     },
     computed: {
@@ -41,11 +38,14 @@ export default {
     	this.$store.dispatch('setEntryQuestions')
     },
     methods:{
-    	next(){
-    		this.index++;
+    	next(selectedIndex){
+    		this.index++
+    		//Promijeniti kada se nadoda vrijesnost odgovra u bazi podataka
+    		if(selectedIndex == null) selectedIndex = 0
+    		this.score += selectedIndex
     	},
     	back(){
-    		this.index--;
+    		this.index--
     	}
     }
 }
