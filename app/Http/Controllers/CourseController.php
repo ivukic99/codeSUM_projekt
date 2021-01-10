@@ -53,7 +53,13 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /*
+        $course = Course::create([
+            'naziv' => $request->newCourseName,
+            'Opis' => $request->newCoursedescription,
+            'Kategorija_id' =>
+        ]);
+        */
     }
 
     /**
