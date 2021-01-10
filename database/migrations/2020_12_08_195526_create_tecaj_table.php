@@ -15,10 +15,14 @@ class CreateTecajTable extends Migration
     {
         Schema::create('tecaj', function (Blueprint $table) {
             $table->id()->unsigned();
+            $table->string('Naziv', 100);
+            $table->text('Opis');
             $table->unsignedBigInteger('Kategorije_id');
+            $table->unsignedBigInteger('Kreator_id');
             $table->timestamps();
 
             $table->foreign('Kategorije_id')->references('id')->on('kategorije');
+            $table->foreign('Kreator_id')->references('id')->on('users');
         });
     }
 
