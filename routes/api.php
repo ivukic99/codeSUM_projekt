@@ -27,4 +27,5 @@ Route::post('/forgot', 'ForgotController@forgot')->name('forgot');
 Route::post('/reset', 'ForgotController@reset')->name('reset');
 Route::get('/entrance_quiz/{id}', 'EntranceQuizController@show')->name('show');
 Route::get('/courses', 'CourseController@index')->name('courses');
+Route::post('/courses/add', 'CourseController@store')->name('course_add');
 Route::get('/categories', 'CategoryController@index')->name('categories');
