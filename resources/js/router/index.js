@@ -13,6 +13,7 @@ import Home from '../views/app/Home.vue';
 import Stanko from '../views/creators/Stanko.vue';
 import Igor from '../views/creators/Igor.vue';
 import Admin from '../views/app/admin/Admin.vue';
+import CoursesAdmin from '../views/app/admin/Courses.vue';
 import EntranceQuiz from '../views/EntranceQuiz.vue';
 import EntranceQuizResults from '../views/EntranceQuizResults.vue';
 
@@ -97,6 +98,14 @@ const routes = [
         path: '/admin',
         name: 'Admin',
         component: Admin,
+        meta: {
+            middleware: [Middleware.admin]
+        }
+    },
+    {
+        path: '/admin/tecajevi',
+        name: 'Courses',
+        component: CoursesAdmin,
         meta: {
             middleware: [Middleware.admin]
         }
