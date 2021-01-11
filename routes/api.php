@@ -30,3 +30,7 @@ Route::get('/courses', 'CourseController@index')->name('courses');
 Route::post('/courses/add', 'CourseController@store')->name('course_add');
 Route::post('/courses/delete/{tecaj_id}', 'CourseController@destroy')->name('course_delete');
 Route::get('/categories', 'CategoryController@index')->name('categories');
+Route::get('/text_lessons/{course_id}', 'CourseController@getTextLessons')->name('get_text_lessons');
+Route::post('/text_lessons/add', 'TextLessonController@store')->name('add_text_lessons');
+Route::get('/text_lessons/delete/{course_id}', 'TextLessonController@destroy')->name('delete_text_lesson');
+Route::post('/text_lessons/save', 'TextLessonController@edit')->name('save_text_lesson');
