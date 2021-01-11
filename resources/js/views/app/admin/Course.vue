@@ -35,6 +35,7 @@
                                   <v-btn
                                     rounded
                                     color="primary"
+                                    :to="`/admin/tecajevi/${getCourseId()}/${action.path}`"
                                   >
                                     Ažuriraj
                                   </v-btn>
@@ -182,22 +183,26 @@ export default {
                  {
                     name: 'Programski',
                     description: 'Ovdje se ažuriraju programski zadaci tečaja.',
-                    img: ''
+                    img: '',
+                    path: 'programske_lekcije'
                  },
                  {
                     name: 'Kvizovi',
                     description: 'Ovdje se ažuriraju kvizovi tečaja.',
-                    img: ''
+                    img: '',
+                    path: 'kviz_lekcije'
                  },
                  {
                     name: 'Tekstualni',
                     description: 'Ovdje se ažuriraju tesktualni zadaci tečaja.',
-                    img: ''
+                    img: '',
+                    path: 'tekstualne_lekcije'
                  },
                  {
                     name: 'Videolekcije',
                     description: 'Ovdje se ažuriraju videolekcije tečaja.',
-                    img: ''
+                    img: '',
+                    path: 'video_lekcije'
                  }
             ],
             value: [
@@ -214,6 +219,11 @@ export default {
                 11,
                 12
               ],
+        }
+    },
+    methods:{
+        getCourseId(){
+            return this.$route.params.tecaj_id
         }
     },
     computed: {

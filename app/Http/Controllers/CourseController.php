@@ -29,7 +29,7 @@ class CourseController extends Controller
             $course->naziv_kategorije = $category_name;
             unset($course->Kategorije_id);
 
-            unset($course->id);
+            //unset($course->id);
         }
 
         return response()->json($courses);
@@ -105,8 +105,8 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($tecaj_id)
     {
-        //
+        return Course::where('id', $tecaj_id)->delete();
     }
 }

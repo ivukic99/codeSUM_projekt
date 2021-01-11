@@ -28,4 +28,5 @@ Route::post('/reset', 'ForgotController@reset')->name('reset');
 Route::get('/entrance_quiz/{id}', 'EntranceQuizController@show')->name('show');
 Route::get('/courses', 'CourseController@index')->name('courses');
 Route::post('/courses/add', 'CourseController@store')->name('course_add');
+Route::post('/courses/delete/{tecaj_id}', 'CourseController@destroy')->name('course_delete');
 Route::get('/categories', 'CategoryController@index')->name('categories');

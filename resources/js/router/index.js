@@ -15,6 +15,7 @@ import Igor from '../views/creators/Igor.vue';
 import Admin from '../views/app/admin/Admin.vue';
 import CoursesAdmin from '../views/app/admin/Courses.vue';
 import CourseAdmin from '../views/app/admin/Course.vue';
+import TextLessonAdmin from '../views/app/admin/TextLesson.vue';
 import EntranceQuiz from '../views/EntranceQuiz.vue';
 import EntranceQuizResults from '../views/EntranceQuizResults.vue';
 
@@ -107,6 +108,14 @@ const routes = [
         path: '/admin/tecajevi',
         name: 'CoursesAdmin',
         component: CoursesAdmin,
+        meta: {
+            middleware: [Middleware.admin]
+        }
+    },
+    {
+        path: '/admin/tecajevi/:tecaj_id/tekstualne_lekcije',
+        name: 'TextLessonAdmin',
+        component: TextLessonAdmin,
         meta: {
             middleware: [Middleware.admin]
         }

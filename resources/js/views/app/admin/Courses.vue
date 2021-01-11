@@ -106,6 +106,26 @@
               class="mx-4"
             ></v-text-field>
           </template>
+          <template v-slot:item="row">
+          <tr>
+            <td>{{row.item.Naziv}}</td>
+            <td>{{row.item.Opis}}</td>
+            <td>{{row.item.kreirao}}</td>
+            <td>{{row.item.naziv_kategorije}}</td>
+            <td>{{row.item.created_at}}</td>
+            <td>{{row.item.updated_at}}</td>
+            <td>
+                <v-btn class="mx-2" fab dark small color="success" @click="viewCourse(row.item.id)">
+                    <v-icon dark>mdi-eye</v-icon>
+                </v-btn>
+            </td>
+            <td>
+                <v-btn class="mx-2" fab dark small color="red" @click="deleteCourse(row.item.id)">
+                    <v-icon dark>mdi-delete</v-icon>
+                </v-btn>
+            </td>
+          </tr>
+      </template>
         </v-data-table>
       </div>
 
@@ -149,9 +169,11 @@ import 'vue-loading-overlay/dist/vue-loading.css';
           { text: 'Naziv', value: 'Naziv' },
           { text: 'Opis', value: 'Opis' },
           { text: 'Kreirao', value: 'kreirao' },
-          { text: 'Naziv kategorije', value: 'naziv_kategorije' },
+          { text: 'Kategorija', value: 'naziv_kategorije' },
           { text: 'Vrijeme kreiranja', value: 'created_at' },
           { text: 'Vrijeme ažuriranja', value: 'updated_at' },
+          { text: 'Pregled', value: 'id' },
+          { text: 'Izbriši', value: 'id' }
         ]
       },
     },
@@ -197,6 +219,28 @@ import 'vue-loading-overlay/dist/vue-loading.css';
         .then((response) => {
           console.log(response.data)
           this.data = response.data;
+        })
+        .catch((err) => {
+          console.log("Dogodila se greška!")
+        });
+      },
+
+      viewCourse(course_id){
+        //console.log(course_id)
+        this.$router.push({path: `/admin/tecajevi/${course_id}`})
+      },
+
+      deleteCourse(course_id){
+        //console.log(course_id)
+
+        this.isLoading = true
+
+        axios
+        .post(`http://localhost/codeSUM_projekt/public/api/courses/delete/${course_id}`)
+        .then((response) => {
+          //console.log(response.data)
+          this.getCourses()
+          this.isLoading = false
         })
         .catch((err) => {
           console.log("Dogodila se greška!")
