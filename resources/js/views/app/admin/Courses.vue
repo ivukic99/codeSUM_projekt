@@ -89,7 +89,7 @@
       </v-card>
     </v-dialog>
 
-        <!--Ovo je tablica sa informacijama o ttečajevima-->
+        <!--Ovo je tablica sa informacijama o tečajevima-->
 
       <div>
         <v-data-table

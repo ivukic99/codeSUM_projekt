@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Course;
 use App\User;
 use App\Category;
+use App\TextLesson;
 
 class CourseController extends Controller
 {
@@ -33,6 +34,13 @@ class CourseController extends Controller
         }
 
         return response()->json($courses);
+    }
+
+    public function getTextLessons($course_id)
+    {
+        $course = Course::where('id', $course_id)->first();
+
+        return $course->hasMany(TextLesson::class, 'Tecaj_id')->get();
     }
 
     /**
