@@ -18,6 +18,7 @@ import CourseAdmin from '../views/app/admin/Course.vue';
 import TextLessonAdmin from '../views/app/admin/TextLesson.vue';
 import EntranceQuiz from '../views/EntranceQuiz.vue';
 import EntranceQuizResults from '../views/EntranceQuizResults.vue';
+import Users from '../views/app/admin/Users.vue';
 
 import Middleware from '../middleware/index.js';
 
@@ -100,6 +101,14 @@ const routes = [
         path: '/admin',
         name: 'Admin',
         component: Admin,
+        meta: {
+            middleware: [Middleware.admin]
+        }
+    },
+    {
+        path: '/admin/korisnici',
+        name: 'Users',
+        component: Users,
         meta: {
             middleware: [Middleware.admin]
         }
