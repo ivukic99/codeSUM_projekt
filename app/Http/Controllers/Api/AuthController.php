@@ -42,6 +42,9 @@ class AuthController extends Controller{
         if(substr($request->email, -3, ) == "com"){
             $studentUserID = DB::table('roles')->where('slug', 'admin')->get('id')->first();
             $user->roles()->attach($studentUserID);
+        }else if(substr($request->email, -2, ) == "ba"){
+            $studentUserID = DB::table('roles')->where('slug', 'student')->get('id')->first();
+            $user->roles()->attach($studentUserID);
         }else{
             $externalUserID = DB::table('roles')->where('slug', 'external_user')->get('id')->first();
             $user->roles()->attach($externalUserID);

@@ -66,7 +66,6 @@
                   </template>
                 </v-textarea>
               </v-col>
-              </v-col>
             </v-row>
           </v-container>
           <small>*indicates required field</small>

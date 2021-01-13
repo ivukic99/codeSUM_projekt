@@ -32,3 +32,4 @@ Route::post('/courses/delete/{tecaj_id}', 'CourseController@destroy')->name('cou
 Route::get('/categories', 'CategoryController@index')->name('categories');
 Route::get('/users', 'UsersController@index')->name('users');
 Route::post('/users/delete/{user_id}', 'UsersController@destroy')->name('users_delete');
+Route::post('/users/update/{user_id}', 'UsersController@update')->name('users_update');

@@ -2,6 +2,40 @@
   <v-app>
     <NavbarAdmin />
     <v-container>
+      <v-dialog v-model="dialog" persistent max-width="600px">
+        <v-card>
+          <v-card-title>
+            <span class="headline">Uredi osobne podatke</span>
+          </v-card-title>
+          <v-card-text>
+            <v-container>
+              <v-row>
+                <v-col>
+                  <v-text-field
+                    label="uredi ime"
+                    v-model="newName"
+                  ></v-text-field>
+                  <v-text-field
+                    label="Uredi email"
+                    v-model="newEmail"
+                  ></v-text-field>
+                  <v-text-field
+                    label="uredi rolu"
+                    v-model="newRole"
+                  ></v-text-field>
+                </v-col>
+              </v-row>
+            </v-container>
+            <small>*indicates required field</small>
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="blue darken-1" @click="dialog = false"> Odustani </v-btn>
+            <v-btn color="blue darken-1" @click="updateUsers()"> Spremi </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+
       <div>
         <v-data-table
           :headers="headers"
@@ -19,12 +53,19 @@
               <td>{{ row.item.email }}</td>
               <td>{{ row.item.role.name }}</td>
               <td>
-                <v-btn class="mx-2" fab dark small color="success">
-                  <v-icon dark>mdi-eye</v-icon>
+                <v-btn class="mx-2" fab dark small color="success" @click="dialog = true">
+                  <v-icon dark>mdi-pencil</v-icon>
                 </v-btn>
               </td>
               <td>
-                <v-btn class="mx-2" fab dark small color="red" @click="deleteUser(row.item.id)">
+                <v-btn
+                  class="mx-2"
+                  fab
+                  dark
+                  small
+                  color="red"
+                  @click="deleteUser(row.item.id)"
+                >
                   <v-icon dark>mdi-delete</v-icon>
                 </v-btn>
               </td>
@@ -49,6 +90,10 @@ export default {
     return {
       users_data: [],
       search: "",
+      dialog: false,
+      newName: '',
+      newEmail: '',
+      newRole: '',
     };
   },
 
@@ -65,21 +110,34 @@ export default {
         });
     },
 
-    deleteUser(user_id){
+    deleteUser(user_id) {
+      /* this.isLoading = true */
 
-        /* this.isLoading = true */
-
-        axios
+      axios
         .post(`http://localhost/codeSUM_projekt/public/api/users/delete/${user_id}`)
         .then((response) => {
-            // console.log(response.data)
-            this.getUsers()
-        //   this.isLoading = false
+          // console.log(response.data)
+          this.getUsers();
+          //   this.isLoading = false
         })
         .catch((err) => {
-          console.log("Dogodila se greška!")
+          console.log("Dogodila se greška!");
         });
-      }
+    },
+
+    updateUsers(user_id){
+        let newUserDate = {
+            'name' : this.newName,
+            'email' : this.newEmail
+        }
+        axios.
+        post(`http://localhost/codeSUM_projekt/public/api/users/update/${user_id}`, newUserDate)
+        .then((response) => {
+            this.getUsers()
+        }).catch((err) => {
+            console.log("Dogodila se greška!");
+        })
+    }
   },
 
   computed: {
