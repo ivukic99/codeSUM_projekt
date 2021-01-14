@@ -189,7 +189,7 @@ import 'vue-loading-overlay/dist/vue-loading.css';
         this.isLoading = true
 
         axios
-        .post("http://localhost/codeSUM_projekt/public/api/courses/add", newCourse)
+        .post("courses/add", newCourse)
         .then((response) => {
           console.log(response)
           this.isLoading = false
@@ -215,7 +215,7 @@ import 'vue-loading-overlay/dist/vue-loading.css';
       },
       getCourses(){
         axios
-        .get("http://localhost/codeSUM_projekt/public/api/courses")
+        .get("courses")
         .then((response) => {
           console.log(response.data)
           this.data = response.data;
@@ -236,7 +236,7 @@ import 'vue-loading-overlay/dist/vue-loading.css';
         this.isLoading = true
 
         axios
-        .post(`http://localhost/codeSUM_projekt/public/api/courses/delete/${course_id}`)
+        .post(`courses/delete/${course_id}`)
         .then((response) => {
           //console.log(response.data)
           this.getCourses()
@@ -250,7 +250,7 @@ import 'vue-loading-overlay/dist/vue-loading.css';
     },
     mounted(){
       axios
-        .get("http://localhost/codeSUM_projekt/public/api/categories")
+        .get("categories")
         .then((response) => {
           console.log(response.data)
           this.categories = response.data;

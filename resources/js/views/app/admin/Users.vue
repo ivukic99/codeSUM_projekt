@@ -111,10 +111,10 @@ export default {
     },
     getUsers() {
       axios
-        .get("http://localhost/codeSUM_projekt/public/api/users")
+        .get('users')
         .then((response) => {
           this.users_data = response.data;
-          console.log(this.users_data);
+          // console.log(this.users_data);
         })
         .catch((err) => {
           console.log("Doslo je do pogreske!");
@@ -125,7 +125,7 @@ export default {
       /* this.isLoading = true */
 
       axios
-        .post(`http://localhost/codeSUM_projekt/public/api/users/delete/${user_id}`)
+        .post(`users/delete/${user_id}`)
         .then((response) => {
           // console.log(response.data)
           this.getUsers();
@@ -139,7 +139,7 @@ export default {
     updateUsers(user_id) {
       axios
         .post(
-          `http://localhost/codeSUM_projekt/public/api/users/update/${user_id}`,
+          `users/update/${user_id}`,
           this.editedData
         )
         .then((response) => {

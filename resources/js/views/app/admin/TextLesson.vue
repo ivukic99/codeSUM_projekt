@@ -151,7 +151,7 @@ export default {
 
             if(this.isEditing === false){
                 axios
-                .post('http://localhost/codeSUM_projekt/public/api/text_lessons/add', params)
+                .post('text_lessons/add', params)
                 .then((response) => {
                   console.log(response.data)
                   this.resetForm()
@@ -163,7 +163,7 @@ export default {
             }else{
                 params.Tecaj_id = this.$route.params.tecaj_id
                 axios
-                .post('http://localhost/codeSUM_projekt/public/api/text_lessons/save', params)
+                .post('text_lessons/save', params)
                 .then((response) => {
                   console.log(response.data)
                   this.resetForm()
@@ -179,7 +179,7 @@ export default {
         deleteTextLesson(courseId){
 
             axios
-            .get(`http://localhost/codeSUM_projekt/public/api/text_lessons/delete/${courseId}`)
+            .get(`text_lessons/delete/${courseId}`)
             .then((response) => {
               console.log(response.data)
               this.getTextLessons()
@@ -193,7 +193,7 @@ export default {
         let courseId = this.$route.params.tecaj_id
 
         axios
-        .get(`http://localhost/codeSUM_projekt/public/api/text_lessons/${courseId}`)
+        .get(`text_lessons/${courseId}`)
         .then((response) => {
           console.log(response.data)
           this.data = response.data;

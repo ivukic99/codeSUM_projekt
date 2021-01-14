@@ -45,7 +45,7 @@ export default new Vuex.Store({
       const config = {
         headers: { Authorization: `Bearer ${token}` }
       };
-      axios.get('http://localhost/codeSUM_projekt/public/api/me', config)
+      axios.get('me', config)
       .then((response) => {
         commit('SET_USER_DETAILS', response.data)
         // console.log('+++++++++++++',response.data.details.roles[0].slug);
@@ -56,7 +56,7 @@ export default new Vuex.Store({
       })
     },
     setEntryQuestions({ commit }){
-      axios.get('http://localhost/codeSUM_projekt/public/api/entrance_quiz/1')
+      axios.get('entrance_quiz/1')
       .then((response) => {
         commit('SET_ENTRY_QUESTIONS', response.data.questions);
       })

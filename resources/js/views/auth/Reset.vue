@@ -75,7 +75,7 @@ export default {
   methods: {
     resetSubmit() {
       axios
-        .post("http://localhost/codeSUM_projekt/public/api/reset", {
+        .post("reset", {
           password: this.password,
           password_confirm: this.password_confirm,
           token: this.$route.params.token,

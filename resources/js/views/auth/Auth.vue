@@ -250,7 +250,7 @@ export default {
     registerUser() {
       axios
         .post(
-          "http://localhost/codeSUM_projekt/public/api/register",
+          "register",
           this.newUser
         )
         .then((response) => {
@@ -273,7 +273,7 @@ export default {
     },
     loginUser() {
       axios
-        .post("http://localhost/codeSUM_projekt/public/api/login", this.user)
+        .post("login", this.user)
         .then((response) => {
           localStorage.setItem('token', response.data.access_token)
           this.saveUserToken(response.data.access_token)
