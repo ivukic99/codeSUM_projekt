@@ -79,7 +79,7 @@ class UsersController extends Controller
      */
     public function update(Request $request, $user_id)
     {
-        $users = User::where('id', $user_id)->get('id')->first();
+        $users = User::find($user_id);
         $users->update($request->all());
 
         return response()->json(["message" => "Uspiješno ste aužurirali podatke!"]);

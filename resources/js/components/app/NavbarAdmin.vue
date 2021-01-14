@@ -95,7 +95,7 @@ export default {
 
       let roles = []
 
-      this.getUserDetails.getUserDetails.roles.forEach( roleObj => {
+      this.getUserDetails.details.roles.forEach( roleObj => {
         roles.push(roleObj.slug)
       })
 

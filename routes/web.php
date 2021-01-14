@@ -18,4 +18,3 @@ Route::get('/{any}', function () {
     return view('welcome');
 })->where('any', '.*');
 
-URL::forceRootUrl('https://studenti.sum.ba/projekti/fpmoz/2021/g2');
