@@ -19,7 +19,6 @@
               </v-col>
             </v-row>
           </v-container>
-          <small>*indicates required field</small>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -50,6 +49,7 @@
               <td>{{ row.item.name }}</td>
               <td>{{ row.item.email }}</td>
               <td>{{ row.item.role.name }}</td>
+              <td>{{ row.item.created_at }}</td>
               <td>
                 <v-btn class="mx-2" fab dark small color="success" @click="onClick(row.item.id)">
                   <v-icon dark>mdi-pencil</v-icon>
@@ -114,7 +114,7 @@ export default {
         .get("http://localhost/codeSUM_projekt/public/api/users")
         .then((response) => {
           this.users_data = response.data;
-          // console.log(this.users_data);
+          console.log(this.users_data);
         })
         .catch((err) => {
           console.log("Doslo je do pogreske!");
@@ -158,6 +158,7 @@ export default {
         { text: "Ime korisnika", value: "Ime korisnika" },
         { text: "Email", value: "Email" },
         { text: "Uloga", value: "Uloga" },
+        { text: "Datum registracije", value: "Datum registracije" },
         { text: "Pregled", value: "id" },
         { text: "Izbriši", value: "id" },
       ];
