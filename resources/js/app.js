@@ -13,7 +13,8 @@ import Vuetify from "../plugins/vuetify";
 import store from './store';
 import axios from "axios";
 
-axios.defaults.baseURL = 'https://studenti.sum.ba/projekti/fpmoz/2021/g2/api';
+// axios.defaults.baseURL = 'https://studenti.sum.ba/projekti/fpmoz/2021/g2/api';
+axios.defaults.baseURL = 'http://localhost/codeSUM_projekt/public/api';
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

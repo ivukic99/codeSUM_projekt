@@ -8,7 +8,6 @@ import Reset from '../views/auth/Reset.vue';
 import BecomeMember from '../views/BecomeMember.vue';
 import Courses from '../views/Courses.vue';
 import CoursesUser from '../views/app/CoursesUser.vue';
-import Profile from '../views/app/Profile.vue';
 import Home from '../views/app/Home.vue';
 import Stanko from '../views/creators/Stanko.vue';
 import Igor from '../views/creators/Igor.vue';
@@ -19,6 +18,7 @@ import TextLessonAdmin from '../views/app/admin/TextLesson.vue';
 import EntranceQuiz from '../views/EntranceQuiz.vue';
 import EntranceQuizResults from '../views/EntranceQuizResults.vue';
 import Users from '../views/app/admin/Users.vue';
+import Profile from '../views/app/Profile.vue';
 
 import Middleware from '../middleware/index.js';
 

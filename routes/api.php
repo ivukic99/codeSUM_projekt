@@ -33,3 +33,5 @@ Route::get('/categories', 'CategoryController@index')->name('categories');
 Route::get('/users', 'UsersController@index')->name('users');
 Route::post('/users/delete/{user_id}', 'UsersController@destroy')->name('users_delete');
 Route::post('/users/update/{user_id}', 'UsersController@update')->name('users_update');
+Route::get('/user/{user_id}', 'UsersController@show')->name('user_profile');
+Route::get('/user_course', 'CourseUserController@index')->name('user_course');

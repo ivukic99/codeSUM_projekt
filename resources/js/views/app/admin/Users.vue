@@ -47,6 +47,7 @@
 
             <tr>
               <td>{{ row.item.name }}</td>
+              <td>{{ row.item.surname }}</td>
               <td>{{ row.item.email }}</td>
               <td>{{ row.item.role.name }}</td>
               <td>{{ row.item.created_at }}</td>
@@ -101,6 +102,7 @@ export default {
           this.editedData = {
             'id': this.users_data[i].id,
             'name': this.users_data[i].name,
+            'surname': this.users_data[i].surname,
             'email': this.users_data[i].email,
             'role': this.users_data[i].role.name
           }
@@ -155,7 +157,8 @@ export default {
   computed: {
     headers() {
       return [
-        { text: "Ime korisnika", value: "Ime korisnika" },
+        { text: "Ime", value: "Ime" },
+        { text: "Prezime", value: "Prezime" },
         { text: "Email", value: "Email" },
         { text: "Uloga", value: "Uloga" },
         { text: "Datum registracije", value: "Datum registracije" },

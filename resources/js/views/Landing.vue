@@ -313,7 +313,7 @@
                   color="black"
                 >
                   <img
-                    src="https://scontent-vie1-1.xx.fbcdn.net/v/t1.0-9/119899914_10217644272169835_2683984069419703109_o.jpg?_nc_cat=101&ccb=2&_nc_sid=09cbfe&_nc_eui2=AeHvuZy9tIT-VnO1IVwd8o6FF6mKKOBxsggXqYoo4HGyCJmOi-aNASJ2gXR-jCkIxYA&_nc_ohc=XREUwx_BB_kAX8r2jcQ&_nc_ht=scontent-vie1-1.xx&oh=94e00e25a85157c2eaff374c70e705b0&oe=5FD26330"
+                    src="https://scontent-vie1-1.xx.fbcdn.net/v/t1.0-1/p160x160/119899914_10217644272169835_2683984069419703109_o.jpg?_nc_cat=101&ccb=2&_nc_sid=dbb9e7&_nc_ohc=o7rPlP6VgBcAX_naKtU&_nc_ht=scontent-vie1-1.xx&tp=6&oh=a332f911ce96bdbc2275f3f364ee5536&oe=60278EC9"
                     alt="Igor Vukić"
                   >
                 </v-avatar>
