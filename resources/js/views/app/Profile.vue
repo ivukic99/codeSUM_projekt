@@ -13,23 +13,23 @@
               <v-col>
                 <v-text-field
                   label="Ime"
-                  v-model="getUserDetails.details.name"
+                  v-model="update_data.name"
                 ></v-text-field>
                 <v-text-field
                   label="Prezime"
-                  v-model="getUserDetails.details.surname"
+                  v-model="update_data.surname"
                 ></v-text-field>
                 <v-text-field
                   label="Email"
-                  v-model="getUserDetails.details.email"
+                  v-model="update_data.email"
                 ></v-text-field>
                 <v-text-field
                   label="Telefon"
-                  v-model="getUserDetails.details.telefon"
+                  v-model="update_data.telefon"
                 ></v-text-field>
                 <v-text-field
                   label="Obrazovanje"
-                  v-model="getUserDetails.details.obrazovanje"
+                  v-model="update_data.obrazovanje"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -87,7 +87,7 @@
           </v-col>
 
           <v-col cols="md-6">
-            <v-card outlined class="mx-auto" max-width="374">
+            <v-card outlined class="mx-auto" max-width="374" height="300"> 
               <v-container>
                 <v-row>
                   <v-spacer></v-spacer>
@@ -134,7 +134,7 @@
           </v-col>
 
           <v-col cols="md-6">
-            <v-card outlined class="mx-auto" max-width="500">
+            <v-card outlined class="mx-auto" max-width="500" height="300">
               <v-card-title>Tečajevi koje pohađam</v-card-title>
               <v-sheet class="mx-auto">
                 <v-slide-group class="pa-4" show-arrows>
@@ -175,44 +175,6 @@
               </v-sheet>
             </v-card>
           </v-col>
-
-          <!-- ovo je za iszbrisat - planiro sam napravit prkaz svih tečaja koje pohadja kroz listanje te neki graf aktivnosti korz datume
-              <v-col cols="md-6">
-            <v-card outlined class="mx-auto my-12" max-width="374">
-              <v-container>
-                <v-row>
-                  <v-spacer></v-spacer>
-                  <v-col cols="sm-8" class="text-h6">Moji podaci</v-col>
-                </v-row>
-                <v-row>
-                  <v-col class="text-right font-weight-light">Ime:</v-col>
-                  <v-col cols="sm-8">{{ getUserDetails.details.name }}</v-col>
-                  <v-col class="text-right font-weight-light">Prezime:</v-col>
-                  <v-col cols="sm-8">{{
-                    getUserDetails.details.surname
-                  }}</v-col>
-                  <v-col class="text-right font-weight-light">Email:</v-col>
-                  <v-col cols="sm-8">{{ getUserDetails.details.email }}</v-col>
-                  <v-col class="text-right font-weight-light"
-                    >Broj mobitela:</v-col
-                  >
-                  <v-col cols="sm-8">{{
-                    getUserDetails.details.telefon
-                      ? getUserDetails.details.telefon
-                      : "-"
-                  }}</v-col>
-                  <v-col class="text-right font-weight-light"
-                    >Obrazovanje:</v-col
-                  >
-                  <v-col cols="sm-8">{{
-                    getUserDetails.details.obrazovanje
-                      ? getUserDetails.details.obrazovanje
-                      : "-"
-                  }}</v-col>
-                </v-row>
-              </v-container>
-            </v-card>
-          </v-col> -->
         </v-row>
       </v-card>
     </v-container>
@@ -241,32 +203,21 @@ export default {
   created() {
     this.$store.dispatch("setUserDetails");
     this.$store.dispatch("setCourseDetails");
-    // this.getUser(neki id);
   },
+
   methods: {
-    // getUser(user_id) {
-    //   axios
-    //     .get(`user/${user_id}`)
-    //     .then((response) => {
-    //       this.users_data = response.data;
-    //       console.log("--__",this.users_data);
-    //     })
-    //     .catch((err) => {
-    //       console.log("Doslo je do pogreske!");
-    //     });
-    // },
 
     onClick() {
       this.dialog = true;
       this.update_data = {
-        name: getUserDetails.details.name,
-        surname: getUserDetails.details.surname,
-        email: getUserDetails.details.email,
-        telefon: getUserDetails.details.telefon,
-        obrazovanje: getUserDetails.details.obrazovanje,
+        "name": getUserDetails.details.name,
+        "surname": getUserDetails.details.surname,
+        "email": getUserDetails.details.email,
+        "telefon": getUserDetails.details.telefon,
+        "obrazovanje": getUserDetails.details.obrazovanje,
       };
 
-      // console.log(this.editedData)
+      console.log(this.update_data)
     },
     updateUsers(user_id) {
       axios
