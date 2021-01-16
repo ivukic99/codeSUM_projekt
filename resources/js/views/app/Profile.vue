@@ -58,8 +58,12 @@
             <v-list-item>
               <v-list-item-avatar size="140">
                 <img
-                  src="https://i.ibb.co/2cMCbQy/profilna.jpg"
-                  alt="Profilna"
+                  v-bind:src="
+                    getUserDetails.details.img
+                      ? getUserDetails.details.img
+                      : 'https://iili.io/Ks0S0N.png'
+                  "
+                  alt="CodeSUM user"
                 />
               </v-list-item-avatar>
               <v-list-item-content>
