@@ -31,6 +31,10 @@
                   label="Obrazovanje"
                   v-model="update_data.obrazovanje"
                 ></v-text-field>
+                <!-- <v-file-input
+                  label="Pohranite svoju fotografiju"
+                  v-model="update_data.image"
+                ></v-file-input> -->
               </v-col>
             </v-row>
           </v-container>
@@ -86,95 +90,132 @@
             </v-btn>
           </v-col>
 
-          <v-col cols="md-6">
-            <v-card outlined class="mx-auto" max-width="374" height="300"> 
-              <v-container>
-                <v-row>
-                  <v-spacer></v-spacer>
-                  <v-col cols="md-8" class="text-h6">Moji podaci</v-col>
-                </v-row>
-                <v-row>
-                  <v-col cols="md-4" class="text-right font-weight-bold"
-                    >Ime:</v-col
-                  >
-                  <v-col cols="md-8" class="font-weight-light">{{
-                    getUserDetails.details.name
-                  }}</v-col>
-                  <v-col cols="md-4" class="text-right font-weight-bold"
-                    >Prezime:</v-col
-                  >
-                  <v-col cols="md-8" class="font-weight-light">{{
-                    getUserDetails.details.surname
-                  }}</v-col>
-                  <v-col cols="md-4" class="text-right font-weight-bold"
-                    >Email:</v-col
-                  >
-                  <v-col cols="md-8" class="font-weight-light">{{
-                    getUserDetails.details.email
-                  }}</v-col>
-                  <v-col cols="md-4" class="text-right font-weight-bold"
-                    >Broj mobitela:</v-col
-                  >
-                  <v-col cols="md-8" class="font-weight-light">{{
-                    getUserDetails.details.telefon
-                      ? getUserDetails.details.telefon
-                      : "-"
-                  }}</v-col>
-                  <v-col cols="md-4" class="text-right font-weight-bold"
-                    >Obrazovanje:</v-col
-                  >
-                  <v-col cols="md-8" class="font-weight-light">{{
-                    getUserDetails.details.obrazovanje
-                      ? getUserDetails.details.obrazovanje
-                      : "-"
-                  }}</v-col>
-                </v-row>
-              </v-container>
-            </v-card>
-          </v-col>
-
-          <v-col cols="md-6">
-            <v-card outlined class="mx-auto" max-width="500" height="300">
-              <v-card-title>Tečajevi koje pohađam</v-card-title>
-              <v-sheet class="mx-auto">
-                <v-slide-group class="pa-4" show-arrows>
-                  <v-slide-item v-for="(value, i) in getCourseDetails" :key="i">
-                    <v-card
-                      color="#FFF9C4"
-                      class="ma-4"
-                      height="150"
-                      width="280"
+          <v-row>
+            <v-col cols="md-5">
+              <v-card outlined class="mx-auto" max-width="374" height="300">
+                <v-container>
+                  <v-row>
+                    <v-spacer></v-spacer>
+                    <v-col cols="md-8" class="text-h6">Moji podaci</v-col>
+                  </v-row>
+                  <v-row>
+                    <v-col cols="md-4" class="text-right font-weight-bold"
+                      >Ime:</v-col
                     >
-                      <v-row
-                        class="fill-height pl-4 pr-4"
-                        align="center"
-                        justify="center"
-                      >
-                        <v-list-item three-line>
-                          <v-list-item-content>
-                            <div class="overline mb-4">TEČAJ</div>
-                            <v-list-item-title class="headline mb-1">
-                              {{ getCourseDetails[i].Naziv }}
-                            </v-list-item-title>
-                            <v-list-item-subtitle>{{
-                              getCourseDetails[i].kategorija.Naziv
-                            }}</v-list-item-subtitle>
-                          </v-list-item-content>
+                    <v-col cols="md-8" class="font-weight-light">{{
+                      getUserDetails.details.name
+                    }}</v-col>
+                    <v-col cols="md-4" class="text-right font-weight-bold"
+                      >Prezime:</v-col
+                    >
+                    <v-col cols="md-8" class="font-weight-light">{{
+                      getUserDetails.details.surname
+                    }}</v-col>
+                    <v-col cols="md-4" class="text-right font-weight-bold"
+                      >Email:</v-col
+                    >
+                    <v-col cols="md-8" class="font-weight-light">{{
+                      getUserDetails.details.email
+                    }}</v-col>
+                    <v-col cols="md-4" class="text-right font-weight-bold"
+                      >Broj mobitela:</v-col
+                    >
+                    <v-col cols="md-8" class="font-weight-light">{{
+                      getUserDetails.details.telefon
+                        ? getUserDetails.details.telefon
+                        : "-"
+                    }}</v-col>
+                    <v-col cols="md-4" class="text-right font-weight-bold"
+                      >Obrazovanje:</v-col
+                    >
+                    <v-col cols="md-8" class="font-weight-light">{{
+                      getUserDetails.details.obrazovanje
+                        ? getUserDetails.details.obrazovanje
+                        : "-"
+                    }}</v-col>
+                  </v-row>
+                </v-container>
+              </v-card>
+            </v-col>
 
-                          <v-list-item-avatar tile size="100">
-                            <img
-                              src="https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png"
-                              alt="Igor"
-                            />
-                          </v-list-item-avatar>
-                        </v-list-item>
-                      </v-row>
-                    </v-card>
-                  </v-slide-item>
-                </v-slide-group>
-              </v-sheet>
-            </v-card>
-          </v-col>
+            <v-col cols="md-7">
+              <v-card outlined class="mx-auto" max-width="440" height="300">
+                <v-card-title>Tečajevi koje pohađam</v-card-title>
+                <v-sheet class="mx-auto">
+                  <v-slide-group class="pa-4" show-arrows>
+                    <v-slide-item
+                      v-for="(value, i) in getCourseDetails"
+                      :key="i"
+                    >
+                      <v-card
+                        color="#FFF9C4"
+                        class="ma-4"
+                        height="150"
+                        width="280"
+                      >
+                        <v-row
+                          class="fill-height pl-4 pr-4"
+                          align="center"
+                          justify="center"
+                        >
+                          <v-list-item three-line>
+                            <v-list-item-content>
+                              <div class="overline mb-4">TEČAJ</div>
+                              <v-list-item-title class="headline mb-1">
+                                {{  }}
+                              </v-list-item-title>
+                              <v-list-item-subtitle>{{
+                                
+                              }}</v-list-item-subtitle>
+                            </v-list-item-content>
+
+                            <v-list-item-avatar tile size="100">
+                              <img
+                                src="https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png"
+                                alt="Igor"
+                              />
+                            </v-list-item-avatar>
+                          </v-list-item>
+                        </v-row>
+                      </v-card>
+                    </v-slide-item>
+                  </v-slide-group>
+                </v-sheet>
+              </v-card>
+            </v-col>
+          </v-row>
+
+          <v-row>
+            <v-col cols="md-12">
+              <v-card
+                class="mx-auto text-center"
+                color="#1B4188"
+                dark
+                max-width="600"
+              >
+                <v-card-text>
+                  <v-sheet color="rgba(0, 0, 0, .12)">
+                    <v-sparkline
+                      :labels="labels"
+                      :value="value"
+                      color="rgba(255, 255, 255, .7)"
+                      height="100"
+                      padding="24"
+                      stroke-linecap="round"
+                      smooth
+                    >
+                    </v-sparkline>
+                  </v-sheet>
+                </v-card-text>
+
+                <v-card-text>
+                  <div class="display-1 font-weight-thin">
+                    Moja aktivnost učenja
+                  </div>
+                </v-card-text>
+              </v-card>
+            </v-col>
+          </v-row>
         </v-row>
       </v-card>
     </v-container>
@@ -194,6 +235,8 @@ export default {
     return {
       update_data: {},
       dialog: false,
+      value: [3, 1, 4, 8, 3, 1, 1, 2, 3, 2, 4, 7],
+      labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     };
   },
   computed: {
@@ -206,18 +249,17 @@ export default {
   },
 
   methods: {
-
     onClick() {
       this.dialog = true;
       this.update_data = {
-        "name": getUserDetails.details.name,
-        "surname": getUserDetails.details.surname,
-        "email": getUserDetails.details.email,
-        "telefon": getUserDetails.details.telefon,
-        "obrazovanje": getUserDetails.details.obrazovanje,
+        'name': getUserDetails.details.name,
+        'surname': getUserDetails.details.surname,
+        'email': getUserDetails.details.email,
+        'telefon': getUserDetails.details.telefon,
+        'obrazovanje': getUserDetails.details.obrazovanje,
       };
 
-      console.log(this.update_data)
+      console.log(this.update_data);
     },
     updateUsers(user_id) {
       axios

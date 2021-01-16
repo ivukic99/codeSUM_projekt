@@ -8,5 +8,5 @@ class Course extends Model
 {
     protected $table = 'tecaj';
 
-    protected $fillable = ['Naziv', 'Opis', 'Kategorije_id', 'Kreator_id'];
+    protected $fillable = ['Naziv', 'Opis', 'Kategorije_id', 'Kreator_id','created_at', 'updated_at'];
 }

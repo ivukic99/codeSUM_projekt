@@ -13,15 +13,12 @@ class CourseUserController extends Controller
     public function index()
     {
         $courses = Course::get();
-        
+        // nesto ovdje ne radi 20 linija koda
         foreach($courses as $course){
             $course_id = $course->id;
-            $category_id = $course->Kategorije_id;
             $user_id = User_course::where('Tecaj_id', $course_id)->get('User_id')->first();
-            $user_name = User::where('id', $user_id->User_id)->get('name')->first();
-            $course->user_id = $user_id;
+            $user_name = User::where('id', $user_id)->get('name')->first();
             $course->user = $user_name;
-            $course->kategorija = Category::where('id', $category_id)->get('Naziv')->first();
             unset($course_id);
         }
         return response()->json($courses);
