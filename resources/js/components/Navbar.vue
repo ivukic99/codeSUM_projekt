@@ -55,24 +55,32 @@
         >
           <v-list-item>
             <v-list-item-icon>
-              <v-icon>mdi-home</v-icon>
+              <v-icon>mdi-account</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Naslovnica</v-list-item-title>
+            <v-list-item-title><v-btn text to="/"><span style="color: black !important;">Naslovnica</span></v-btn></v-list-item-title>
           </v-list-item>
 
           <v-list-item>
             <v-list-item-icon>
               <v-icon>mdi-account</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Tečajevi</v-list-item-title>
+            <v-list-item-title><v-btn text to="/tecajevi_pregled"><span style="color: black !important;">Tečajevi</span></v-btn></v-list-item-title>
           </v-list-item>
 
           <v-list-item>
             <v-list-item-icon>
               <v-icon>mdi-account</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Postani član</v-list-item-title>
+            <v-list-item-title><v-btn text to="/postani_clan"><span style="color: black !important;">Postani član</span></v-btn></v-list-item-title>
           </v-list-item>
+
+          <v-list-item>
+            <v-list-item-icon>
+              <v-icon>mdi-account</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title><v-btn text to="/auth"><span style="color: black !important;">Prijava</span></v-btn></v-list-item-title>
+          </v-list-item>
+
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>

@@ -29,30 +29,37 @@ export default {
 		items: [
 			{
 				oppositeText: 'Naslov1',
-				heading: 'Podnaslov1',
+				heading: 'Rješavanje zadataka',
 				text:
-          'Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum',
+          'CodeSUM sadrži nekoliko tipova tečajeva.Svaki tečaj na CodeSUM nudi nekoliko različitih tipova zadataka.',
 				icon: 'mdi-calendar',
 			},
 			{
 				oppositeText: 'Naslov2',
-				heading: 'Podnaslov2',
+				heading: 'Rješavanje izazova',
 				text:
-          'Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum',
+          'CodeSUM pruža mogućnost rješavanja programskih zadataka putem interaktivnog programskog sučelja.',
 				icon: 'mdi-calendar',
 			},
 			{
 				oppositeText: 'Naslov3',
-				heading: 'mdi-calendar',
+				heading: 'Kreiranje klanova',
 				text:
-          'Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem',
+          'Korisnici se mogu udruživati u klanove i zajednički prikupljati bodove',
 				icon: 'mdi-calendar',
             },
             {
-				oppositeText: 'Naslov3',
-				heading: 'mdi-calendar',
+				oppositeText: 'Naslov4',
+				heading: 'Skupljanje bodova',
 				text:
-          'Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem',
+          'Svaki izazov, svaki tečaj i svaki zadatak unutar tečaja nosi svoju bodovnu vrijednost. Bodovi se upisuju u bodovni sustav tečaja, ali i globalno.',
+				icon: 'mdi-calendar',
+            },
+            {
+				oppositeText: 'Naslov5',
+				heading: 'Certifikati',
+				text:
+          'Nakon završetka svih zadataka u sklopu nekog tečaja korisnik dobiva CoudeSUM certifikat.',
 				icon: 'mdi-calendar',
 			}
 		],

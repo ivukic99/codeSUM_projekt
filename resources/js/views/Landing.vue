@@ -128,14 +128,14 @@
 
                   <v-card-text class="text--primary">
 
-                    <div>{{ item.description }}</div>
+                    <div style="text-align: justify;">{{ item.description }}</div>
                   </v-card-text>
 
                   <v-card-actions class="d-flex justify-end p-3">
                     <v-dialog
                       v-model="item.dialog"
                       persistent
-                      max-width="290"
+                      max-width="350"
                     >
                       <template v-slot:activator="{ on, attrs }">
                     <v-btn
@@ -179,11 +179,10 @@
                     <v-card-text>
                       <p class="display-1 font-weight-medium" style="color: #1B4188;">Interaktivno sučelje za programiranje</p>
                       <div class="justify-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempor molestie magna quis blandit.
-                        Proin id lectus et leo vestibulum consequat. Vivamus ut libero vel felis vestibulum facilisis.
-                        Nam velit tellus, sollicitudin et fermentum ac, efficitur quis mauris.
-                        Nullam viverra sem varius ligula laoreet faucibus. Fusce ac malesuada felis. Integer ullamcorper dui ac justo malesuada sollicitudin. Nunc vitae egestas ante.
-                        Aliquam faucibus nunc nec leo sollicitudin vehicula. Nulla volutpat in neque in vulputate.
+                        CodeSUM pruža mogućnost izrade programskih zadataka unutar interaktivnog sučelja
+                        za programiranje. Sučelje se može koristiti unutar zadataka u sklopu tečajeva, zatim 
+                        u sklopu riješavanja pojedinačnih izazova i u sklopu slobodne vježbe.CoduSUM posjeduje
+                        sučelje koje kompajlira kod korisnika online.
                       </div>
                     </v-card-text>
                   </v-col>
@@ -209,11 +208,10 @@
                     <v-card-text>
                       <p class="display-1 font-weight-medium" style="color: #1B4188;">Tehnologije korištene za izradu</p>
                       <div class="justify-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempor molestie magna quis blandit.
-                        Proin id lectus et leo vestibulum consequat. Vivamus ut libero vel felis vestibulum facilisis.
-                        Nam velit tellus, sollicitudin et fermentum ac, efficitur quis mauris.
-                        Nullam viverra sem varius ligula laoreet faucibus. Fusce ac malesuada felis. Integer ullamcorper dui ac justo malesuada sollicitudin. Nunc vitae egestas ante.
-                        Aliquam faucibus nunc nec leo sollicitudin vehicula. Nulla volutpat in neque in vulputate.
+                        Primarne tehnologije pomoću kojih je izgrađen CodeSUM su PHP framework Laravel na backendu i JavaScript framework Vue js na frontendu. Laravel i Vue js se trenutno
+                        nameću kao jedni od najpopularnijih backend i frontend tehnologija u svijetu. Za sam
+                        ravoj web aplikacije korišten je i XAMPP. Također, u projekt su implementirane i brojne
+                        biblioteke, a kao jedna od važnijih ističe se CodeMirror koja omogućuje online kompajliranje programskog koda.
                       </div>
                     </v-card-text>
                   </v-col>
@@ -420,40 +418,40 @@ export default {
           dialog: false,
           image: 'https://iili.io/K3d1xn.png',
           name: 'Programiranje',
-          description: 'Ovo je neki opis...',
+          description: 'Programiranje je pisanje uputa računalu što i kako učiniti, a izvodi se u nekom od programskih jezika. Programiranje je umjetnost i umijeće u stvaranju programa za računala. Stvaranje programa sadrži u sebi pojedine elemente dizajna, umjetnosti, znanosti, matematike kao i inžinjeringa.',
           modal:{
-            name: 'Ovo je naziv modala',
-            description: 'Ovo je neki opis modala...'
+            name: 'Programiranje',
+            description: 'Stvaranje programa sadrži u sebi pojedine elemente dizajna, umjetnosti, znanosti, matematike kao i inžinjeringa. Osoba koja stvara program zove se programer.Programi ili upute za računalo pišu se u programskom jeziku upotrebom odredjene sintakse i pravila koja vrijede za svaki programski jezik (ili tip), koji se potom prevodi u strojni jezik koje je osobito za određeno računalo te je ovisno o njegovoj arhitekturi. Prevođenje s višeg programskog jezika na strojni provodi se putem programa prevodioca (kompajler) ili se naredbe u višem jeziku izravno prevode preko takozvanog p_koda u strojni jezik.Primjeri programskih jezika:Assembler, BASIC, Pascal C/C++/C#, Java, Logo, Fortran'
           }
         },
         {
           dialog: false,
           image: 'https://iili.io/K3dlDX.png',
           name: 'Timski rad',
-          description: 'Ovo je neki opis...',
+          description: 'Timski rad zajednički je napor grupe da postigne zajednički cilj ili da zadatak izvrši na najefikasniji i najefikasniji način. Ovaj koncept se vidi u širem okviru tima, koji je grupa međuovisnih pojedinaca koji zajedno rade na zajedničkom cilju. Osnovni zahtjevi za efikasan timski rad su odgovarajuća veličina tima.',
           modal:{
-            name: 'Ovo je naziv modala',
-            description: 'Ovo je neki opis modala...'
+            name: 'Timski rad',
+            description: 'Japanska poslovica kaže: ”Nitko od nas nije pametan toliko koliko svi mi zajedno.” Toga su svjesna uspješna poduzeća i zato se kontinuirano bave svojim timovima. Tim je skup pojedinaca koji radeći zajedno postižu rezultate čija kvaliteta nadrasta pojedinačna postignuća članova tima. Tim potiče, koristi i razvija snage, vještine, znanja i iskustva svojih članova i tako nadoknađuje individualne slabosti i značajno doprinosi efektivnosti rada. Budući da kvalitetno funkcioniranje u suvremenom društvu zahtijeva sposobnost praćenja i selekcije novih informacija, sagledavanja pojava iz različitih uglova, otvorenost za nova iskustva, sposobnost adaptacije na promjene, timski način rada se pokazao kao brži, operativniji i kreativniji.'
           }
         },
         {
           dialog: false,
           image: 'https://iili.io/K3dcNt.png',
           name: 'Logičko razmišljanje',
-          description: 'Ovo je neki opis...',
+          description: 'jeste filozofska disciplina koja se se bavi izučavanjem oblika i zakona istinitog i pravilnog mišljenja. Ljudsko mišljenje sadrži sve ono što čovjek misli i taj sadržaj je izuzetno raznovrstan i velik.Forme ili oblici sadržaja mišljenja, odnosno način ispoljavanja mišljenja, ujedno su i osnovni elementi ili glavne kategorije logike: pojam, sud i zaključak.',
           modal:{
-            name: 'Ovo je naziv modala',
-            description: 'Ovo je neki opis modala...'
+            name: 'Logičko razmišljanje',
+            description: 'Logični mislioci promatraju i analiziraju pojave, reakcije i povratne informacije, a zatim donose zaključke na temelju tog unosa. Svoje strategije, akcije i odluke mogu opravdati na temelju činjenica koje prikupe.'
           }
         },
         {
           dialog: false,
           image: 'https://iili.io/K3daRI.png',
           name: 'Rješavanje problemskih zadataka',
-          description: 'Ovo je neki opis...',
+          description: 'sastoji se od urednog korištenja generičkih ili ad hoc metoda za pronalaženje rješenja za probleme. Neke tehnike rješavanja problema razvijene i korištene u filozofiji, umjetnoj inteligenciji, računalnim znanostima, inženjerstvu, matematici, medicini i općenito u društvima povezane su s tehnikama mentalnog rješavanja problema koje se proučavaju u psihologiji i kognitivnim znanostima.',
           modal:{
-            name: 'Ovo je naziv modala',
-            description: 'Ovo je neki opis modala...'
+            name: 'Rješavanje problemskih zadataka',
+            description: 'Problemi su u središtu onoga što mnogi ljudi svakodnevno rade na poslu. Bez obzira rješavate li problem za klijenta (unutarnjeg ili vanjskog), podržavate li one koji rješavaju probleme ili otkrivate nove probleme za rješavanje, problemi s kojima se suočavate mogu biti veliki ili mali, jednostavni ili složeni i laki ili teški.Temeljni dio uloge svakog menadžera je pronalaženje načina za njihovo rješavanje. Stoga je pouzdanje u rješavanju problema zaista važno za vaš uspjeh. Velik dio tog samopouzdanja proizlazi iz dobrog postupka koji se koristi kada se pristupi problemu. Jednom možete riješiti probleme brzo i učinkovito. Bez njega vaša će rješenja možda biti neučinkovita, ili ćete zapeti i ne poduzimati ništa, s ponekad bolnim posljedicama.Četiri su osnovna koraka u rješavanju problema:Definiranje problema.Generiranje alternativa.Procjena i odabir alternativa.Provedbena rješenja.'
           }
         }
       ],
