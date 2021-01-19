@@ -3,50 +3,90 @@
         <NavbarAdmin />
         
         <v-container>
-            <h1>Dodavanje zadataka.</h1>
-
-            <!--Forma za dodavanje pismenih zadataka-->
-            <v-form
-                ref="form"
+          <div class="d-flex justify-content-between align-center mb-5">
+            <h3>Ažuriranje tekstualnih lekcija</h3>
+              <v-btn
+                class="mx-2"
+                fab
+                dark
+                color="indigo"
+                @click="dialog = true"
               >
-                <v-text-field
-                  v-model="name"
-                  :counter="10"
-                  label="Naziv"
-                  required
-                ></v-text-field>
+                <v-icon dark>
+                  mdi-plus
+                </v-icon>
+              </v-btn>
+            </div>
 
-                <v-text-field
-                  v-model="description"
-                  label="Opis"
-                  required
-                ></v-text-field>
-
-                <v-text-field
-                  v-model="hyperlink"
-                  label="Poveznica"
-                  required
-                ></v-text-field>
-
-                <v-btn
-                  color="success"
-                  class="mr-4"
-                  @click="saveTextLesson"
-                >
-                  Spremi
-                </v-btn>
-
-                <v-btn
-                  color="error"
-                  class="mr-4"
-                  @click="resetForm"
-                >
-                  Reset Form
-                </v-btn>
-              </v-form>
+            <!--Modal dialog-->
+              <v-dialog
+                v-model="dialog"
+                persistent
+                max-width="600px"
+              >
+                <v-card>
+                  <v-card-title>
+                    <span class="headline">Ažuriranje videolekcija</span>
+                  </v-card-title>
+                  <v-card-text>
+                    <v-container>
+                      <v-row>
+                        <v-col
+                          cols="12"
+                        >
+                          <v-text-field
+                            v-model="name"
+                            label="Naziv tekstualne lekcije"
+                            required
+                          ></v-text-field>
+                        </v-col>
+                        <v-col
+                          cols="12"
+                        >
+                        <v-textarea
+                          v-model="description"
+                          color="teal"
+                          required
+                          >
+                            <template v-slot:label>
+                              <div>
+                                Opis tekstualne lekcije
+                              </div>
+                            </template>
+                          </v-textarea>
+                        </v-col>
+                        <v-col
+                          cols="12"
+                        >
+                          <v-text-field
+                            v-model="hyperlink"
+                            label="Poveznica"
+                            required
+                          ></v-text-field>
+                        </v-col>
+                        </v-col>
+                      </v-row>
+                    </v-container>
+                  </v-card-text>
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn
+                      color="blue darken-1"
+                      @click="closeDialog"
+                    >
+                      Odustani
+                    </v-btn>
+                    <v-btn
+                      color="blue darken-1"
+                      @click="saveTextLesson"
+                    >
+                      Spremi
+                    </v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-dialog>
 
               <!--Tablica sa popisom tekstualnim lekcija iz tečaja-->
-              <h1 class="mt-12">Pregled pismenih zadataka</h1>
 
               <v-data-table
                   :headers="headers"
@@ -82,15 +122,25 @@
                   </tr>
               </template>
         </v-data-table>
+
+        <!--Loader-->
+
+        <Loading :active.sync="isLoading" 
+            :can-cancel="true" 
+            :is-full-page="fullPage">
+        </Loading>
+
         </v-container>
     </div>
 </template>
 
 <script>
 import NavbarAdmin from '../../../components/app/NavbarAdmin.vue';
+import Loading from 'vue-loading-overlay';
 export default {
     components:{
-        NavbarAdmin
+        NavbarAdmin,
+        Loading
     },
     data(){
         return{
@@ -100,7 +150,10 @@ export default {
             description: '',
             hyperlink: '',
             lesson_id: null,
-            isEditing: false
+            isEditing: false,
+            dialog: false,
+            fullPage: true,
+            isLoading: false
         }
     },
     methods: {
@@ -149,6 +202,8 @@ export default {
                 'Tecaj_id': courseId
             }
 
+            this.isLoading = true
+
             if(this.isEditing === false){
                 axios
                 .post('text_lessons/add', params)
@@ -156,6 +211,8 @@ export default {
                   console.log(response.data)
                   this.resetForm()
                   this.getTextLessons()
+                  this.dialog = false
+                  this.isLoading = false
                 })
                 .catch((err) => {
                   console.log("Dogodila se greška!")
@@ -169,6 +226,8 @@ export default {
                   console.log(response.data)
                   this.resetForm()
                   this.getTextLessons()
+                  this.dialog = false
+                  this.isLoading = false
                 })
                 .catch((err) => {
                   console.log("Dogodila se greška!")
@@ -207,6 +266,10 @@ export default {
         this.name = '',
         this.description = '',
         this.hyperlink = ''
+      },
+      closeDialog(){
+        this.resetForm()
+        this.dialog = false
       }
     },
     created(){
