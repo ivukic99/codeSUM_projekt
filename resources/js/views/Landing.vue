@@ -227,12 +227,12 @@
 
       <!--Kreatori-->
 
-      <v-row>
+      <v-row class="creators-container">
         <v-col cols="12" md="6">
 
           <v-card
           class="mx-auto mt-10"
-          max-width="344"
+          max-width="300"
           outlined
         >
           <v-list-item three-line>
@@ -300,7 +300,7 @@
 
           <v-card
           class="mx-auto mt-10"
-          max-width="344"
+          max-width="300"
           outlined
         >
           <v-list-item three-line>
@@ -490,11 +490,24 @@ export default {
 .avatar__card{
   position: absolute;
   top: -60px;
-  left: 125px;
+  left: 105px;
 }
+
+ .creators-container{
+  max-width: 100% !important;
+}
+
 @media only screen and (max-width: 960px) {
+  .avatar__card{
+  position: absolute;
+  top: -60px;
+  left: 100px;
+}
+
   #landing-image{
     display: none;
   }
 }
+
+
 </style>
