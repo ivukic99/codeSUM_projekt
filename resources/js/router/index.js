@@ -15,6 +15,7 @@ import Admin from '../views/app/admin/Admin.vue';
 import CoursesAdmin from '../views/app/admin/Courses.vue';
 import CourseAdmin from '../views/app/admin/Course.vue';
 import TextLessonAdmin from '../views/app/admin/TextLesson.vue';
+import VideoLessonAdmin from '../views/app/admin/VideoLesson.vue';
 import EntranceQuiz from '../views/EntranceQuiz.vue';
 import EntranceQuizResults from '../views/EntranceQuizResults.vue';
 import Users from '../views/app/admin/Users.vue';
@@ -125,6 +126,14 @@ const routes = [
         path: '/admin/tecajevi/:tecaj_id/tekstualne_lekcije',
         name: 'TextLessonAdmin',
         component: TextLessonAdmin,
+        meta: {
+            middleware: [Middleware.admin]
+        }
+    },
+    {
+        path: '/admin/tecajevi/:tecaj_id/video_lekcije',
+        name: 'VideoLessonAdmin',
+        component: VideoLessonAdmin,
         meta: {
             middleware: [Middleware.admin]
         }

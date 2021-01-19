@@ -3,7 +3,7 @@
         <NavbarAdmin />
         
         <v-container>
-            <h1>Dodavanje zadataka</h1>
+            <h1>Dodavanje zadataka.</h1>
 
             <!--Forma za dodavanje pismenih zadataka-->
             <v-form
