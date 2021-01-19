@@ -47,7 +47,7 @@
     </v-app-bar>
 
     <!--Navigation drawer for small devices-->
-    <v-navigation-drawer v-model="drawer" absolute temporary>
+    <v-navigation-drawer v-model="drawer" absolute temporary style="z-index: 10000">
       <v-list nav dense>
         <v-list-item-group
           v-model="group"

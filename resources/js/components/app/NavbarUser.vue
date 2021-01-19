@@ -35,7 +35,7 @@
                 />
               </v-avatar>
               <div class="d-flex flex-column align-center justify-around pa-3">
-                <span class="white--text text-h6">{{ getUserDetails.details ? getUserDetails.details.name  : ''}}</span>
+                <span class="white--text text-h6">{{ getUserDetails.details ? getUserFullName : ''}}</span>
                 <!--
                 <span class="white--text text-caption">{{ getUserDetails.role.type ? getUserDetails.role.type : 'Nije navedeno' }} | {{ getUserDetails.role.org ? getUserDetails.role.org : 'Nije navedno' }}</span>
                 -->
@@ -105,6 +105,9 @@ export default {
 
       return 'Student'
 
+    },
+    getUserFullName(){
+      return this.getUserDetails.details.name + ' ' + this.getUserDetails.details.surname
     }
   },
   methods: {
@@ -112,7 +115,7 @@ export default {
       localStorage.removeItem("token");
       localStorage.removeItem("role");
       this.$router.push({ name: "Auth" });
-    },
+    }
   },
   created(){
       this.$store.dispatch('setUserDetails')

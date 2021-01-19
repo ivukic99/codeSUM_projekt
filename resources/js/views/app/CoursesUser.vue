@@ -170,18 +170,18 @@ export default {
             var term = this.currentTerm
             var category = this.currentCategory
       
-      if(category === "All" && term === "") {
-        return this.courses;
-      }else if(this.currentCategory === "All"){
-                return this.courses.filter(function(course) {
-                    return course.name.includes(term);
-                });
-            }else {
-                return this.courses.filter(function(course) {
-                    return course.category === category && course.name.includes(term);
-                });
+            if(category === "All" && term === "") {
+              return this.courses;
+            }else if(this.currentCategory === "All"){
+                      return this.courses.filter(function(course) {
+                          return course.Naziv.includes(term);
+                      });
+              }else {
+                  return this.courses.filter(function(course) {
+                      return course.naziv_kategorije === category && course.Naziv.includes(term);
+                  });
+              }
             }
-        }
     },
     created(){
       this.getCourses()
