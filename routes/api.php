@@ -33,7 +33,7 @@ Route::get('/categories', 'CategoryController@index')->name('categories');
 Route::get('/text_lessons/{course_id}', 'CourseController@getTextLessons')->name('get_text_lessons');
 Route::post('/text_lessons/add', 'TextLessonController@store')->name('add_text_lessons');
 Route::get('/text_lessons/delete/{course_id}', 'TextLessonController@destroy')->name('delete_text_lesson');
-Route::post('/text_lessons/save', 'TextLessonController@edit')->name('save_text_lesson');
+Route::post('/text_lessons/save', 'TextLessonController@update')->name('save_text_lesson');
 Route::get('/video_lessons/{course_id}', 'CourseController@getVideoLessons')->name('get_video_lessons');
 Route::post('/video_lessons/add', 'VideoLessonController@store')->name('add_video_lessons');
 Route::get('/video_lessons/delete/{lesson_id}', 'VideoLessonController@destroy')->name('delete_video_lesson');

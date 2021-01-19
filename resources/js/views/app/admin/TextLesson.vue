@@ -162,6 +162,7 @@ export default {
                 });
             }else{
                 params.Tecaj_id = this.$route.params.tecaj_id
+                params.Lekcija_id = this.id
                 axios
                 .post('text_lessons/save', params)
                 .then((response) => {

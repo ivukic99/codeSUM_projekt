@@ -68,7 +68,7 @@ class TextLessonController extends Controller
      */
     public function edit(Request $request)
     {
-        return TextLesson::where('id', $request->Tecaj_id)->update(['Naziv' => $request->Naziv, 'Opis' => $request->Opis, 'Poveznica' => $request->Poveznica]);
+
     }
 
     /**
@@ -78,9 +78,10 @@ class TextLessonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $lesson = TextLesson::find($request->Lekcija_id);
+        return $lesson->update(['Naziv' => $request->Naziv, 'Opis' => $request->Opis, 'Poveznica' => $request->Poveznica]);
     }
 
     /**
