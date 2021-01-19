@@ -1,9 +1,11 @@
 <template>
     <v-app>
         <NavbarAdmin />
-        <h1>Admin page</h1>
+        <v-container>
+            <h5>Ovaj dio je još uvijek u izradi!</h5>
 
-        {{ getUserDetails }}
+            <!--{{ getUserDetails }}-->
+        </v-container>
     </v-app>
 </template>
 

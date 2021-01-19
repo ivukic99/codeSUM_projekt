@@ -46,7 +46,7 @@
                 </v-row>
             </div>
 
-            <h3>Statistika tečaja</h3>
+            <h3 class="mt-10">Statistika tečaja</h3>
                
                <v-container class="mb-12">
                 <v-row>
@@ -56,7 +56,7 @@
                   :size="100"
                   :width="15"
                   value="70"
-                  color="#26c6da"
+                  color="#1B4188"
                 >
                   7/10
                 </v-progress-circular>
@@ -66,7 +66,7 @@
             <v-col class="d-flex justify-center align-center" xs="12" sm="12" md="4" lg="4">
             <v-card
                 class="mx-auto"
-                color="#26c6da"
+                color="#1B4188"
                 dark
                 width="300"
               >
@@ -90,7 +90,7 @@
             <v-col class="d-flex justify-center align-center" xs="12" sm="12" md="4" lg="4">
               <v-card
                 class="mx-auto"
-                color="#26c6da"
+                color="#1B4188"
                 dark
                 max-width="300"
               >
@@ -123,7 +123,7 @@
                     <v-col v-for="i in 2" :key="i">
                         <v-card
                             class="mx-auto text-center"
-                            color="green"
+                            color="#1B4188"
                             dark
                             max-width="350"
                           >

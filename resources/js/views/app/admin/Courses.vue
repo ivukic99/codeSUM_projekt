@@ -9,7 +9,7 @@
             class="mx-2"
             fab
             dark
-            color="indigo"
+            color="#1B4188"
             @click="dialog = true"
           >
             <v-icon dark>
