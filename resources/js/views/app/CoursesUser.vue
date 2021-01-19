@@ -24,7 +24,7 @@
 
                     <v-img
                     height="200"
-                    :src="course.image"
+                    :src="course.image ? course.image : 'https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png'"
                     ></v-img>
 
 
@@ -35,12 +35,12 @@
                         class="mx-0"
                     >
                         
-                        <v-card-title>{{ course.name }}</v-card-title>
+                        <v-card-title>{{ course.Naziv }}</v-card-title>
 
                     </v-row>
 
                     <div>
-                        <p style="text-align: justify;"> {{ course.description }} </p>
+                        <p style="text-align: justify;"> {{ course.Opis }} </p>
                     </div>
                     </v-card-text>
 
@@ -52,7 +52,7 @@
 
                         <div class="d-flex">
                             <v-rating
-                            :value="course.rating.stars"
+                            :value="4.5"
                             color="amber"
                             dense
                             half-increments
@@ -61,7 +61,7 @@
                             ></v-rating>
 
                             <div class="grey--text ml-4">
-                            {{ course.rating.people_asked }}
+                             abcd 
                             </div>
                         </div>
                     </div>
@@ -69,22 +69,12 @@
                     <v-divider class="mx-4"></v-divider>
 
                     <v-card-text>
+                    <div class="d-flex justify-content-around align-center mt-3 mr-5">
                     <v-chip-group
                         v-model="selection"
                         active-class="deep-purple accent-4 white--text"
                         column
                     >
-                        <v-chip
-                        class="ma-2"
-                        color="#1B4188"
-                        label
-                        text-color="white"
-                        >
-                        <v-icon left>
-                            mdi-clock
-                        </v-icon>
-                            {{ course.material_hours }}
-                        </v-chip>
 
                         <v-chip
                         class="ma-2"
@@ -96,7 +86,7 @@
                         <v-icon left>
                             mdi-account
                         </v-icon>
-                            {{ course.participants }}
+                            dd
                         </v-chip>
 
                         <v-chip
@@ -104,26 +94,21 @@
                         color="#1B4188"
                         label
                         text-color="white"
-                        >
-                        <v-icon left>
-                            mdi-map
-                        </v-icon>
-                            {{ course.materials }}
-                        </v-chip>
-
-                        <v-chip
-                        class="ma-2"
-                        color="#1B4188"
-                        label
-                        text-color="white"
+                        style="background: #1B4188 !important;"
                         >
                         <v-icon left>
                             mdi-note
                         </v-icon>
-                            {{ course.code_tasks }}
+                            ff
                         </v-chip>
 
                     </v-chip-group>
+                    <div class="d-flex align-center justify-center ml-8">
+                      <div style="font-size: 18px;">
+                      {{ course.kreirao }}
+                      </div>
+                    </div>
+                    </div>
                     </v-card-text>
                 </v-card>
 
@@ -135,9 +120,8 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 import Navbar from '../../components/app/NavbarUser.vue';
-import FilterSearch from '../../components/FilterSearch';
+import FilterSearch from '../../components/FilterSearch';;
 
 export default {
     components: {
@@ -150,150 +134,7 @@ export default {
       selection: 1,
       currentTerm: '',
       currentCategory: 'All',
-      courses: [
-          {
-              image: 'https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png',
-              name: 'Test Course 1',
-              description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit aliquam a expedita nostrum assumenda vel dolorum dolore consequuntur',
-              rating: {
-                  stars: 4.5,
-                  people_asked: 112
-              },
-              material_hours: 4,
-              participants: 218,
-              materials: 24,
-              code_tasks: 32,
-              category: 'Data science'
-          },
-          {
-              image: 'https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png',
-              name: 'Python data visualization',
-              description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit aliquam a expedita nostrum assumenda vel dolorum dolore consequuntur',
-              rating: {
-                  stars: 4.5,
-                  people_asked: 112
-              },
-              material_hours: 4,
-              participants: 218,
-              materials: 24,
-              code_tasks: 32,
-              category: 'Data science'
-          },
-          {
-              image: 'https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png',
-              name: 'Python 3',
-              description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit aliquam a expedita nostrum assumenda vel dolorum dolore consequuntur',
-              rating: {
-                  stars: 4.5,
-                  people_asked: 112
-              },
-              material_hours: 4,
-              participants: 218,
-              materials: 24,
-              code_tasks: 32,
-              category: 'Basics of programming'
-          },
-          {
-              image: 'https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png',
-              name: 'Test Course 4',
-              description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit aliquam a expedita nostrum assumenda vel dolorum dolore consequuntur',
-              rating: {
-                  stars: 4.5,
-                  people_asked: 112
-              },
-              material_hours: 4,
-              participants: 218,
-              materials: 24,
-              code_tasks: 32,
-              category: 'Web development'
-          },
-          {
-              image: 'https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png',
-              name: 'Test Course 5',
-              description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit aliquam a expedita nostrum assumenda vel dolorum dolore consequuntur',
-              rating: {
-                  stars: 4.5,
-                  people_asked: 112
-              },
-              material_hours: 4,
-              participants: 218,
-              materials: 24,
-              code_tasks: 32,
-              category: 'Data science'
-          },
-          {
-              image: 'https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png',
-              name: 'Test Course 6',
-              description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit aliquam a expedita nostrum assumenda vel dolorum dolore consequuntur',
-              rating: {
-                  stars: 4.5,
-                  people_asked: 112
-              },
-              material_hours: 4,
-              participants: 218,
-              materials: 24,
-              code_tasks: 32,
-              category: 'Web development'
-          },
-          {
-              image: 'https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png',
-              name: 'Test Course 7',
-              description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit aliquam a expedita nostrum assumenda vel dolorum dolore consequuntur',
-              rating: {
-                  stars: 4.5,
-                  people_asked: 112
-              },
-              material_hours: 4,
-              participants: 218,
-              materials: 24,
-              code_tasks: 32,
-              category: 'Mobile applications'
-          },
-          {
-              image: 'https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png',
-              name: 'Test Course 8',
-              description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit aliquam a expedita nostrum assumenda vel dolorum dolore consequuntur',
-              rating: {
-                  stars: 4.5,
-                  people_asked: 112
-              },
-              material_hours: 4,
-              participants: 218,
-              materials: 24,
-              code_tasks: 32,
-              category: 'Algorithms'
-          },
-          
-          {
-              image: 'https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png',
-              name: 'Uvod u Python',
-              description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit aliquam a expedita nostrum assumenda vel dolorum dolore consequuntur',
-              rating: {
-                  stars: 4.5,
-                  people_asked: 112
-              },
-              material_hours: 4,
-              participants: 218,
-              materials: 24,
-              code_tasks: 32,
-              category: 'Basics of programming'
-          },
-          
-          {
-              image: 'https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png',
-              name: 'Test Course 10',
-              description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit aliquam a expedita nostrum assumenda vel dolorum dolore consequuntur',
-              rating: {
-                  stars: 4.5,
-                  people_asked: 112
-              },
-              material_hours: 4,
-              participants: 218,
-              materials: 24,
-              code_tasks: 32,
-              category: 'Databases'
-          },
-      ]
+      courses: []
     }),
 
     methods: {
@@ -310,20 +151,28 @@ export default {
       changeCategory: function(category) {
           this.currentTerm = ""
           this.currentCategory = category
-		}
     },
-
+    getCourses(){
+      axios
+        .get("courses")
+        .then((response) => {
+          console.log(response.data)
+          this.courses = response.data;
+          //console.log(response.data)
+        })
+        .catch((err) => {
+          console.log("Dogodila se greška!")
+        });
+    }
+  },
     computed: {
-        ...mapGetters([
-            'getUserDetails'
-        ]),
         filteredCourses(){
             var term = this.currentTerm
             var category = this.currentCategory
-			
-			if(category === "All" && term === "") {
-				return this.courses;
-			}else if(this.currentCategory === "All"){
+      
+      if(category === "All" && term === "") {
+        return this.courses;
+      }else if(this.currentCategory === "All"){
                 return this.courses.filter(function(course) {
                     return course.name.includes(term);
                 });
@@ -335,7 +184,7 @@ export default {
         }
     },
     created(){
-        this.$store.dispatch('setUserDetails')
+      this.getCourses()
     }
 
 }
