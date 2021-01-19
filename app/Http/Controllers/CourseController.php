@@ -23,13 +23,17 @@ class CourseController extends Controller
         foreach($courses as $course){
             $creator_id = $course->Kreator_id;
             $creator_name = User::where('id', $creator_id)->get(['name'])->first()->name;
-            $course->kreirao = $creator_name;
+            $creator_surname = User::where('id', $creator_id)->get(['surname'])->first()->surname;
+            $course->kreirao = $creator_name . ' ' . $creator_surname;
             unset($course->Kreator_id);
 
             $category_id = $course->Kategorije_id;
             $category_name = Category::where('id', $category_id)->get(['naziv'])->first()->naziv;
             $course->naziv_kategorije = $category_name;
             unset($course->Kategorije_id);
+
+            $course->broj_upisanih_korisnika = $course->getNumberOfUsers($course->id);
+            $course->broj_lekcija = $course->getNumberOfLessons($course->id);
 
             //unset($course->id);
         }

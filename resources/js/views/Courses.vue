@@ -52,7 +52,7 @@
 
                         <div class="d-flex">
                             <v-rating
-                            :value="4.5"
+                            :value="0"
                             color="amber"
                             dense
                             half-increments
@@ -61,7 +61,7 @@
                             ></v-rating>
 
                             <div class="grey--text ml-4">
-                             abcd 
+                             0 / 0
                             </div>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                         <v-icon left>
                             mdi-account
                         </v-icon>
-                            dd
+                            {{ course.broj_upisanih_korisnika }}
                         </v-chip>
 
                         <v-chip
@@ -99,7 +99,7 @@
                         <v-icon left>
                             mdi-note
                         </v-icon>
-                            ff
+                            {{ course.broj_lekcija }}
                         </v-chip>
 
                     </v-chip-group>

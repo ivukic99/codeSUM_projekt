@@ -3,7 +3,8 @@
         <NavbarUser />
         
         <v-container>
-            {{ getUserDetails.details }}
+            <!--{{ getUserDetails.details }}-->
+            <h5>Ovaj dio je još uvijek u izradi!</h5>
         </v-container>
     </div>
 </template>
