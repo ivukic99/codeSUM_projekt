@@ -44,6 +44,25 @@
       	<hr />
 
       	</v-container>
+      	<!--Prikaz broja završenih lekcija od ukupnog broja-->
+      	<div v-if="dataReady">
+      	<v-container fluid class="d-flex justify-center" v-if="!isFinished">
+	      	<div class="course-status-container d-flex align-center">
+	      		<div>
+	      			Broj preostalih lekcija: {{ remaining }}
+	      		</div>
+	      	</div>
+      	</v-container>
+
+      	<v-container fluid class="d-flex justify-center" v-else>
+	      	<div class="course-status-container-green d-flex align-center" style="height: 100px !important">
+	      		<div>
+	      			Čestitamo! Certifikat možete preuzeti 
+	      			<v-btn text>ovdje</v-btn>
+	      		</div>
+	      	</div>
+      	</v-container>
+      </div>
 
       	<v-container v-if="dataReady" style="background: lightgrey;" fluid>
 
@@ -164,7 +183,9 @@ export default {
     	return{
     		lessons: [],
     		finishedLessons: [],
-    		dataReady: false
+    		dataReady: false,
+    		isFinished: false,
+    		remaining: null
     	}
     },
     methods:{
@@ -172,25 +193,37 @@ export default {
 			axios
 			  .post('enrolled_course/finished_lessons', {Tecaj_id: this.$route.params.tecaj_id, User_id: this.getUserDetails.details.id})
 			  .then((response) => {
-			    //console.log(response.data)
+			    console.log(response.data)
 			    this.finishedLessons = response.data
 			    this.dataReady = true
+			    this.checkIfFinished()
+			    this.LessonsRemaining()
 			  })
 			  .catch((err) => {
 			    console.log("Dogodila se greška!")
 			  });
-    	}
+    	},
+    	checkIfFinished(){
+	    	this.isFinished = this.lessons.programming_lessons.length === this.finishedLessons.programske_lekcije.length && this.lessons.quiz_lessons.length === this.finishedLessons.quiz_lekcije.length && this.lessons.text_lessons.length === this.finishedLessons.tekst_lekcije.length && this.lessons.video_lessons.length === this.finishedLessons.video_lekcije.length
+	    },
+	    LessonsRemaining(){
+	    	let finished_lessons = this.finishedLessons.programske_lekcije.length + this.finishedLessons.quiz_lekcije.length + this.finishedLessons.video_lekcije.length + this.finishedLessons.tekst_lekcije.length
+	    	let all_lessons = this.lessons.programming_lessons.length + this.lessons.quiz_lessons.length + this.lessons.video_lessons.length + this.lessons.text_lessons.length
+
+	    	this.remaining = all_lessons - finished_lessons
+	    }
     },
     computed: {
 		...mapGetters([
 	        'getUserDetails'
 	    ])
+
     },
     created(){
     	axios
       .post('enrolled_course', {Tecaj_id: this.$route.params.tecaj_id})
       .then((response) => {
-        //console.log(response.data)
+        console.log(response.data)
         this.lessons = response.data
       })
       .catch((err) => {
@@ -269,5 +302,34 @@ export default {
 .lesson-button-box{
 	width: 50%; 
 	margin-right: 15px;
+}
+
+.course-status-container{
+	background: yellow;
+	height: 60px;
+	max-width: 280px;
+	padding: 30px;
+	border-radius: 20px;
+	margin-bottom: 25px;
+}
+
+.course-status-container-green{
+	background: green;
+	height: 60px;
+	max-width: 280px;
+	padding: 30px;
+	border-radius: 20px;
+	margin-bottom: 25px;
+}
+
+.course-status-container div{
+	color: black;
+	font-size: 18px;
+}
+
+.course-status-container-green div{
+	color: white;
+	font-size: 16px;
+	padding: 5px;
 }
 </style>
