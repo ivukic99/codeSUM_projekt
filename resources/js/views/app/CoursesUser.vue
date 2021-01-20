@@ -46,10 +46,10 @@
 
                     <div class="d-flex justify-content-around mt-3 mr-5">
 
-                        <v-btn v-if="enrolled_courses.includes(course.id)" color="#1B4188">
+                        <v-btn v-if="enrolled_courses.includes(course.id)" color="#1B4188" @click="goToCourse(course.id)">
                             Nastavi
                         </v-btn>
-                        <v-btn v-else color="#1B4188">
+                        <v-btn v-else color="#1B4188" @click="enrollCourse(course.id)">
                             Upiši
                         </v-btn>
 
@@ -175,6 +175,20 @@ export default {
       .post('enrolled_courses', {user_id: this.getUserDetails.details.id})
       .then((response) => {
         this.enrolled_courses = response.data
+      })
+      .catch((err) => {
+        console.log("Dogodila se greška!")
+      });
+    },
+    goToCourse(courseId){
+      this.$router.push({name: 'RollCourse', params:{tecaj_id: courseId}})
+    },
+    enrollCourse(courseId){
+      axios
+      .post('enroll_course', {Tecaj_id: courseId, User_id: this.getUserDetails.details.id})
+      .then((response) => {
+        console.log(response.data)
+        this.$router.push({name: 'RollCourse', params:{tecaj_id: courseId}})
       })
       .catch((err) => {
         console.log("Dogodila se greška!")

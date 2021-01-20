@@ -43,9 +43,12 @@ class CourseUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        return User_course::create([
+            'Tecaj_id' => $request->Tecaj_id,
+            'User_id' => $request->User_id
+        ]);
     }
 
     /**

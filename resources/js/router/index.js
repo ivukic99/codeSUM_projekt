@@ -9,6 +9,8 @@ import BecomeMember from '../views/BecomeMember.vue';
 import Courses from '../views/Courses.vue';
 import CoursesUser from '../views/app/CoursesUser.vue';
 import Home from '../views/app/Home.vue';
+import ViewCourse from '../views/app/ViewCourse.vue';
+import RollCourse from '../views/app/RollCourse.vue';
 import Stanko from '../views/creators/Stanko.vue';
 import Igor from '../views/creators/Igor.vue';
 import Admin from '../views/app/admin/Admin.vue';
@@ -94,6 +96,22 @@ const routes = [
         path: '/naslovnica',
         name: 'Pocetna',
         component: Home,
+        meta: {
+            middleware: [Middleware.auth]
+        }
+    },
+    {
+        path: '/tecajevi_pregled/:tecaj_id',
+        name: 'ViewCourse',
+        component: ViewCourse,
+        meta: {
+            middleware: [Middleware.guest]
+        }
+    },
+    {
+        path: '/tecajevi/:tecaj_id',
+        name: 'RollCourse',
+        component: RollCourse,
         meta: {
             middleware: [Middleware.auth]
         }

@@ -46,7 +46,7 @@
 
                     <div class="d-flex justify-content-around mt-3 mr-5">
 
-                        <v-btn color="#1B4188">
+                        <v-btn color="#1B4188" @click="viewCourse(course.id)">
                             Pogledaj
                         </v-btn>
 
@@ -163,6 +163,9 @@ export default {
         .catch((err) => {
           console.log("Dogodila se greška!")
         });
+    },
+    viewCourse(courseId){
+      this.$router.push({name: 'ViewCourse', params:{tecaj_id: courseId}})
     }
   },
     computed: {
