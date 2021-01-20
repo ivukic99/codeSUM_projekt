@@ -43,3 +43,4 @@ Route::post('/users/delete/{user_id}', 'UsersController@destroy')->name('users_d
 Route::post('/users/update/{user_id}', 'UsersController@update')->name('users_update');
 Route::get('/user/{user_id}', 'UsersController@show')->name('user_profile');
 Route::get('/user_course', 'CourseUserController@index')->name('user_course');
+Route::post('/enrolled_courses', 'CourseUserController@EnrolledCourses')->name('enrolled_courses');

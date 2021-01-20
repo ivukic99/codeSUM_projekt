@@ -6,7 +6,7 @@
 
     <v-container>
         
-        <v-row>
+        <v-row v-if="dataReady">
             <v-col v-for="(course, index)  in filteredCourses" :key="index" xs="12" sm="12" md="6" lg="6">
                 
                 <v-card
@@ -46,8 +46,11 @@
 
                     <div class="d-flex justify-content-around mt-3 mr-5">
 
-                        <v-btn color="#1B4188">
-                            Pogledaj
+                        <v-btn v-if="enrolled_courses.includes(course.id)" color="#1B4188">
+                            Nastavi
+                        </v-btn>
+                        <v-btn v-else color="#1B4188">
+                            Upiši
                         </v-btn>
 
                         <div class="d-flex">
@@ -120,6 +123,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import Navbar from '../../components/app/NavbarUser.vue';
 import FilterSearch from '../../components/FilterSearch';
 
@@ -134,7 +138,9 @@ export default {
       selection: 1,
       currentTerm: '',
       currentCategory: 'All',
-      courses: []
+      courses: [],
+      enrolled_courses: [],
+      dataReady: false
     }),
 
     methods: {
@@ -156,16 +162,29 @@ export default {
       axios
         .get("courses")
         .then((response) => {
-          console.log(response.data)
+          //console.log(response.data)
           this.courses = response.data;
           //console.log(response.data)
         })
         .catch((err) => {
           console.log("Dogodila se greška!")
         });
+    },
+    setEnrolledCourses(){
+      axios
+      .post('enrolled_courses', {user_id: this.getUserDetails.details.id})
+      .then((response) => {
+        this.enrolled_courses = response.data
+      })
+      .catch((err) => {
+        console.log("Dogodila se greška!")
+      });
     }
   },
     computed: {
+      ...mapGetters([
+            'getUserDetails'
+        ]),
         filteredCourses(){
             var term = this.currentTerm
             var category = this.currentCategory
@@ -181,11 +200,17 @@ export default {
                       return course.naziv_kategorije === category && course.Naziv.includes(term);
                   });
               }
-            }
+          },
     },
     created(){
       this.getCourses()
+    },
+    watch: {
+    getUserDetails: function (val) {
+      this.setEnrolledCourses()
+      this.dataReady = true
     }
+  }
 
 }
 </script>

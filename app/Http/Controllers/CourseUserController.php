@@ -24,6 +24,20 @@ class CourseUserController extends Controller
         return response()->json($courses);
     }
 
+    public function EnrolledCourses(Request $request){
+        $enrolled_courses_id = array();
+
+        $user = User::where('id', $request->user_id)->get()->first();
+        $enrolled_courses = $user->hasMany(User_course::class, 'User_id')->get();
+
+        foreach($enrolled_courses as $course){
+            array_push($enrolled_courses_id, $course->Tecaj_id);
+        }
+
+        return $enrolled_courses_id;
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *
