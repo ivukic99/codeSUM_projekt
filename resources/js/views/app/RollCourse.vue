@@ -45,7 +45,7 @@
 
       	</v-container>
 
-      	<v-container style="background: lightgrey;" fluid>
+      	<v-container v-if="dataReady" style="background: lightgrey;" fluid>
 
       	<!--Ispis svih lekcija-->
 
@@ -55,13 +55,14 @@
       		<div class="pa-5">
       			<h5>Programske lekcije</h5>
       		</div>
-      		<div class="lesson-box d-flex justify-start align-center">
+      		<div class="lesson-box d-flex justify-start align-center" v-for="(lesson, index) in lessons.programming_lessons" :key="index">
       			<div class="lesson-box-part">
-      				<i class="fas fa-check"></i>
+      				<i v-if="finishedLessons.programske_lekcije.includes(lesson.id)" class="fas fa-check green-item"></i>
+      				<i v-else class="fas fa-times yellow-item"></i>
       			</div>
       			<div class="d-flex  align-center" style="width: 100%;">
       				<div class="lesson-name-box">
-      					Lekcija 1
+      					{{ lesson.Naziv }}
       				</div>
       				<div class="d-flex justify-end lesson-button-box">
       					<v-btn color="#1B4188">
@@ -79,13 +80,14 @@
       		<div class="pa-5">
       			<h5>Kvizovi</h5>
       		</div>
-      		<div class="lesson-box d-flex justify-start align-center">
+      		<div class="lesson-box d-flex justify-start align-center" v-for="(lesson, index) in lessons.quiz_lessons" :key="index">
       			<div class="lesson-box-part">
-      				<i class="fas fa-check"></i>
+      				<i v-if="finishedLessons.quiz_lekcije.includes(lesson.id)" class="fas fa-check green-item"></i>
+      				<i v-else class="fas fa-times yellow-item"></i>
       			</div>
       			<div class="d-flex  align-center" style="width: 100%;">
       				<div class="lesson-name-box">
-      					Lekcija 1
+      					{{ lesson.Naziv }}
       				</div>
       				<div class="d-flex justify-end lesson-button-box">
       					<v-btn color="#1B4188">
@@ -103,13 +105,14 @@
       		<div class="pa-5">
       			<h5>Tekstualne lekcije</h5>
       		</div>
-      		<div class="lesson-box d-flex justify-start align-center">
+      		<div class="lesson-box d-flex justify-start align-center" v-for="(lesson, index) in lessons.text_lessons" :key="index">
       			<div class="lesson-box-part">
-      				<i class="fas fa-check"></i>
+      				<i v-if="finishedLessons.tekst_lekcije.includes(lesson.id)" class="fas fa-check green-item"></i>
+      				<i v-else class="fas fa-times yellow-item"></i>
       			</div>
       			<div class="d-flex  align-center" style="width: 100%;">
       				<div class="lesson-name-box">
-      					Lekcija 1
+      					{{ lesson.Naziv }}
       				</div>
       				<div class="d-flex justify-end lesson-button-box">
       					<v-btn color="#1B4188">
@@ -127,13 +130,14 @@
       		<div class="pa-5">
       			<h5>Videolekcije</h5>
       		</div>
-      		<div class="lesson-box d-flex justify-start align-center">
+      		<div class="lesson-box d-flex justify-start align-center" v-for="(lesson, index) in lessons.video_lessons" :key="index">
       			<div class="lesson-box-part">
-      				<i class="fas fa-check"></i>
+      				<i v-if="finishedLessons.video_lekcije.includes(lesson.id)" class="fas fa-check green-item"></i>
+      				<i v-else class="fas fa-times yellow-item"></i>
       			</div>
       			<div class="d-flex  align-center" style="width: 100%;">
       				<div class="lesson-name-box">
-      					Lekcija 1
+      					{{ lesson.Naziv }}
       				</div>
       				<div class="d-flex justify-end lesson-button-box">
       					<v-btn color="#1B4188">
@@ -150,6 +154,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import Navbar from '../../components/app/NavbarUser.vue';
 export default {
     components: {
@@ -157,9 +162,46 @@ export default {
     },
     data(){
     	return{
-
+    		lessons: [],
+    		finishedLessons: [],
+    		dataReady: false
     	}
+    },
+    methods:{
+    	getFinishedLessons(){
+			axios
+			  .post('enrolled_course/finished_lessons', {Tecaj_id: this.$route.params.tecaj_id, User_id: this.getUserDetails.details.id})
+			  .then((response) => {
+			    //console.log(response.data)
+			    this.finishedLessons = response.data
+			    this.dataReady = true
+			  })
+			  .catch((err) => {
+			    console.log("Dogodila se greška!")
+			  });
+    	}
+    },
+    computed: {
+		...mapGetters([
+	        'getUserDetails'
+	    ])
+    },
+    created(){
+    	axios
+      .post('enrolled_course', {Tecaj_id: this.$route.params.tecaj_id})
+      .then((response) => {
+        //console.log(response.data)
+        this.lessons = response.data
+      })
+      .catch((err) => {
+        console.log("Dogodila se greška!")
+      });
+    },
+    watch: {
+    getUserDetails: function (val) {
+      this.getFinishedLessons()
     }
+  }
 
 }
 </script>
@@ -190,6 +232,7 @@ export default {
 	background: white;
 	height: 60px;
 	border-radius: 5px;
+	margin-bottom: 10px;
 }
 
 .lesson-box-part{
@@ -202,8 +245,13 @@ export default {
 	border-radius: 5px;
 }
 
-.lesson-box-part i{
+.green-item{
 	color: green;
+	font-size: 24px;
+}
+
+.yellow-item{
+	color: yellow;
 	font-size: 24px;
 }
 
