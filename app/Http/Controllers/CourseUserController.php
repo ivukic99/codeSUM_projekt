@@ -14,12 +14,15 @@ class CourseUserController extends Controller
     {
         $courses = Course::get();
         // nesto ovdje ne radi 20 linija koda
-        foreach($courses as $course){
+        foreach ($courses as $course){
             $course_id = $course->id;
+            $category_id = $course->Kategorije_id;
+            $category_name = Category::where('id', $category_id)->get('Naziv')->first();
             $user_id = User_course::where('Tecaj_id', $course_id)->get('User_id')->first();
-            $user_name = User::where('id', $user_id)->get('name')->first();
-            $course->user = $user_name;
-            unset($course_id);
+            $user_all = User::find($user_id);
+            $course->category_name = $category_name;
+            $course->user = $user_all;
+            unset($course->id);
         }
         return response()->json($courses);
     }

@@ -2,6 +2,33 @@
   <v-app>
     <NavbarUser />
 
+    <v-dialog v-model="img_dialog" persistent max-width="400px">
+      <v-card>
+        <v-card-title>
+          <span class="headline">Dodaj sliku profila</span>
+        </v-card-title>
+        <v-card-text>
+          <v-container>
+            <v-row>
+              <v-col>
+                <v-file-input
+                  label="Pohranite svoju fotografiju"
+                  v-model="image"
+                ></v-file-input>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="blue darken-1" @click="img_dialog = false">
+            Odustani
+          </v-btn>
+          <v-btn color="blue darken-1" @click="saveImg()"> Spremi </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
     <v-dialog v-model="dialog" persistent max-width="600px">
       <v-card>
         <v-card-title>
@@ -58,28 +85,41 @@
       <v-card class="mx-auto">
         <v-img height="200" src="https://iili.io/FKX3RS.png"></v-img>
         <v-row style="margin: 2.5%; position: absolute; top: 125px">
-          <v-col cols="12">
+          <v-col cols="md-12">
             <v-list-item>
-              <v-list-item-avatar size="140">
-                <img
-                  v-bind:src="
-                    getUserDetails.details.img
-                      ? getUserDetails.details.img
-                      : 'https://iili.io/Ks0S0N.png'
-                  "
-                  alt="CodeSUM user"
-                />
-              </v-list-item-avatar>
+              <v-hover>
+                <template v-slot:default="{ hover }">
+                  <div class="text-center">
+                    <v-btn icon height="140" width="140" @click="addImg()">
+                      <v-avatar size="140">
+                        <img
+                          v-bind:src="
+                            getUserDetails.details.image
+                              ? getUserDetails.details.image
+                              : 'https://iili.io/Ks0S0N.png'
+                          "
+                          alt="CodeSUM user"
+                        />
+                        <v-fade-transition>
+                          <v-overlay v-if="hover" absolute color="#1B4188">
+                            <v-icon>mdi-plus</v-icon> Uredi
+                          </v-overlay>
+                        </v-fade-transition>
+                      </v-avatar>
+                    </v-btn>
+                  </div>
+                </template>
+              </v-hover>
               <v-list-item-content>
-                <v-list-item-title class="title" style="margin-top: 20px">
-                  <h2>
-                    {{
-                      getUserDetails.details.name +
-                      " " +
-                      getUserDetails.details.surname
-                    }}
-                  </h2></v-list-item-title
-                >
+                <v-list-item-title
+                  class="display-1"
+                  style="margin-top: 20px"
+                  v-text="
+                    getUserDetails.details.name +
+                    ' ' +
+                    getUserDetails.details.surname
+                  "
+                ></v-list-item-title>
               </v-list-item-content>
             </v-list-item>
           </v-col>
@@ -92,7 +132,7 @@
 
           <v-row>
             <v-col cols="md-5">
-              <v-card outlined class="mx-auto" max-width="374" height="300">
+              <v-card outlined class="mx-auto">
                 <v-container>
                   <v-row>
                     <v-spacer></v-spacer>
@@ -139,54 +179,6 @@
             </v-col>
 
             <v-col cols="md-7">
-              <v-card outlined class="mx-auto" max-width="440" height="300">
-                <v-card-title>Tečajevi koje pohađam</v-card-title>
-                <v-sheet class="mx-auto">
-                  <v-slide-group class="pa-4" show-arrows>
-                    <v-slide-item
-                      v-for="(value, i) in getCourseDetails"
-                      :key="i"
-                    >
-                      <v-card
-                        color="#FFF9C4"
-                        class="ma-4"
-                        height="150"
-                        width="280"
-                      >
-                        <v-row
-                          class="fill-height pl-4 pr-4"
-                          align="center"
-                          justify="center"
-                        >
-                          <v-list-item three-line>
-                            <v-list-item-content>
-                              <div class="overline mb-4">TEČAJ</div>
-                              <v-list-item-title class="headline mb-1">
-                                {{  }}
-                              </v-list-item-title>
-                              <v-list-item-subtitle>{{
-                                
-                              }}</v-list-item-subtitle>
-                            </v-list-item-content>
-
-                            <v-list-item-avatar tile size="100">
-                              <img
-                                src="https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png"
-                                alt="Igor"
-                              />
-                            </v-list-item-avatar>
-                          </v-list-item>
-                        </v-row>
-                      </v-card>
-                    </v-slide-item>
-                  </v-slide-group>
-                </v-sheet>
-              </v-card>
-            </v-col>
-          </v-row>
-
-          <v-row>
-            <v-col cols="md-12">
               <v-card
                 class="mx-auto text-center"
                 color="#1B4188"
@@ -216,6 +208,54 @@
               </v-card>
             </v-col>
           </v-row>
+
+          <v-row>
+            <v-col cols="md-12">
+              <v-card outlined >
+                <v-card-title>Tečajevi koje pohađam</v-card-title>
+                <v-sheet class="mx-auto">
+                  <v-slide-group class="pa-4" show-arrows>
+                    <v-slide-item
+                      v-for="(value, i) in getCourseDetails"
+                      :key="i"
+                    >
+                      <v-card
+                        color="#FFF9C4"
+                        class="ma-4"
+                        height="150"
+                        width="280"
+                      >
+                        <v-row
+                          class="fill-height pl-4 pr-4"
+                          align="center"
+                          justify="center"
+                        >
+                          <v-list-item three-line>
+                            <v-list-item-content>
+                              <div class="overline mb-4">TEČAJ</div>
+                              <v-list-item-title class="headline mb-1">
+                                {{ value.Naziv }}
+                              </v-list-item-title>
+                              <v-list-item-subtitle>{{
+                                value.category_name.Naziv
+                              }}</v-list-item-subtitle>
+                            </v-list-item-content>
+
+                            <v-list-item-avatar tile size="100">
+                              <img
+                                src="https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png"
+                                alt="Igor"
+                              />
+                            </v-list-item-avatar>
+                          </v-list-item>
+                        </v-row>
+                      </v-card>
+                    </v-slide-item>
+                  </v-slide-group>
+                </v-sheet>
+              </v-card>
+            </v-col>
+          </v-row>
         </v-row>
       </v-card>
     </v-container>
@@ -235,6 +275,8 @@ export default {
     return {
       update_data: {},
       dialog: false,
+      img_dialog: false,
+      image: "",
       value: [3, 1, 4, 8, 3, 1, 1, 2, 3, 2, 4, 7],
       labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     };
@@ -249,8 +291,23 @@ export default {
   },
 
   methods: {
+    addImg() {
+      this.img_dialog = true;
+      console.log(this.image);
+    },
+    saveImg() {
+      console.log(this.image);
+    },
     onClick() {
       this.dialog = true;
+      // ne vuce getUSerDetails.details.neki atribut
+      /* this.update_data = {
+        name: getUserDetails.details.name,
+        surname: getUserDetails.details.surname,
+        email: getUserDetails.details.email,
+        telefon: getUserDetails.details.telefon,
+        obrazovanje: getUserDetails.details.obrazovanje,
+      }; */
       this.update_data = {
         'name': getUserDetails.details.name,
         'surname': getUserDetails.details.surname,
@@ -258,8 +315,6 @@ export default {
         'telefon': getUserDetails.details.telefon,
         'obrazovanje': getUserDetails.details.obrazovanje,
       };
-
-      console.log(this.update_data);
     },
     updateUsers(user_id) {
       axios

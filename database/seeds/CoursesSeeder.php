@@ -14,7 +14,7 @@ class CoursesSeeder extends Seeder
     {
         Course::insert([
         	[
-        		'Naziv' => 'Programiranje u programskom jeziku Python',
+        		'Naziv' => 'Python',
         		'Opis' => 'Ovo je tečaj za početnike u kojem su obrađene osnove programiranja u programskom jeziku Python.',
         		'Kategorije_id'=> 5,
         		'Kreator_id' => 1,
