@@ -11,10 +11,8 @@
           <v-container>
             <v-row>
               <v-col>
-                <v-file-input
-                  label="Pohranite svoju fotografiju"
-                  v-model="image"
-                ></v-file-input>
+                <input type="file" @change="uploadImage" class="form-control">
+                <!-- <input label="Odaberi fotografiju"  @change="uploadImage"></v-file-input> -->
               </v-col>
             </v-row>
           </v-container>
@@ -24,7 +22,7 @@
           <v-btn color="blue darken-1" @click="img_dialog = false">
             Odustani
           </v-btn>
-          <v-btn color="blue darken-1" @click="saveImg()"> Spremi </v-btn>
+          <v-btn color="blue darken-1" @click="onUpload(getUserDetails.details.id)"> Spremi </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -90,7 +88,7 @@
               <v-hover>
                 <template v-slot:default="{ hover }">
                   <div class="text-center">
-                    <v-btn icon height="140" width="140" @click="addImg()">
+                    <v-btn icon height="140" width="140" @click="img_dialog = true">
                       <v-avatar size="140">
                         <img
                           v-bind:src="
@@ -211,7 +209,7 @@
 
           <v-row>
             <v-col cols="md-12">
-              <v-card outlined >
+              <v-card outlined>
                 <v-card-title>Tečajevi koje pohađam</v-card-title>
                 <v-sheet class="mx-auto">
                   <v-slide-group class="pa-4" show-arrows>
@@ -274,9 +272,11 @@ export default {
   data() {
     return {
       update_data: {},
+      selectedFile: {
+        'image': '', 
+      },
       dialog: false,
       img_dialog: false,
-      image: "",
       value: [3, 1, 4, 8, 3, 1, 1, 2, 3, 2, 4, 7],
       labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     };
@@ -291,23 +291,35 @@ export default {
   },
 
   methods: {
-    addImg() {
-      this.img_dialog = true;
-      console.log(this.image);
+    uploadImage(event){
+      var fileReader = new FileReader();
+
+      fileReader.readAsDataURL(event.target.files[0])
+
+      fileReader.onload = (event) => {
+        this.selectedFile.image = event.target.result
+      }
+
+      console.log(this.selectedFile)
     },
-    saveImg() {
-      console.log(this.image);
+
+    onUpload(user_id){
+      /* const fd = new FormData();
+      fd.append('image', this.selectedFile, this.selectedFile.name)
+      console.log(fd); */
+      axios
+        .post(`uploadImg/${user_id}`, this.selectedFile)
+        .then((response) => {
+          console.log(response)
+        })
+        .catch((err) => {
+          console.log("Dogodila se greška!");
+        });
     },
+
     onClick() {
       this.dialog = true;
       // ne vuce getUSerDetails.details.neki atribut
-      /* this.update_data = {
-        name: getUserDetails.details.name,
-        surname: getUserDetails.details.surname,
-        email: getUserDetails.details.email,
-        telefon: getUserDetails.details.telefon,
-        obrazovanje: getUserDetails.details.obrazovanje,
-      }; */
       this.update_data = {
         'name': getUserDetails.details.name,
         'surname': getUserDetails.details.surname,

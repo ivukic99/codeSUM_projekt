@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Role;
 use App\Users_roles;
+use Illuminate\Support\Facades\Response;
+
 
 class UsersController extends Controller
 {
@@ -37,6 +39,31 @@ class UsersController extends Controller
     public function create()
     {
         //
+    }
+
+    public function uploadImage(Request $request, $user_id)
+    {
+        $user = User::find($user_id);
+ 
+        $exploded = explode(',', $request->image);
+
+        $decoded = base64_decode($exploded[1]);
+        
+        if(str_contains($exploded[0], 'jpeg')){
+            $extension = 'jpg';
+        }else {
+            $extension = 'png';
+        }
+
+        $fileName = $user->name . '_image' . '.' . $extension;
+
+        $path = public_path() . '/' . $fileName;
+
+        file_put_contents($path, $decoded);
+
+        $user->update(['image' => $fileName]);
+
+        return $user;
     }
 
     /**
