@@ -11,7 +11,7 @@
           <v-container>
             <v-row>
               <v-col>
-                <input type="file" @change="uploadImage" class="form-control">
+                <input type="file" @change="uploadImage" class="form-control" />
                 <!-- <input label="Odaberi fotografiju"  @change="uploadImage"></v-file-input> -->
               </v-col>
             </v-row>
@@ -22,7 +22,12 @@
           <v-btn color="blue darken-1" @click="img_dialog = false">
             Odustani
           </v-btn>
-          <v-btn color="blue darken-1" @click="onUpload(getUserDetails.details.id)"> Spremi </v-btn>
+          <v-btn
+            color="blue darken-1"
+            @click="onUpload(getUserDetails.details.id)"
+          >
+            Spremi
+          </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -88,12 +93,17 @@
               <v-hover>
                 <template v-slot:default="{ hover }">
                   <div class="text-center">
-                    <v-btn icon height="140" width="140" @click="img_dialog = true">
+                    <v-btn
+                      icon
+                      height="140"
+                      width="140"
+                      @click="img_dialog = true"
+                    >
                       <v-avatar size="140">
                         <img
                           v-bind:src="
                             getUserDetails.details.image
-                              ? getUserDetails.details.image
+                              ? '/storage/' + getUserDetails.details.image
                               : 'https://iili.io/Ks0S0N.png'
                           "
                           alt="CodeSUM user"
@@ -111,7 +121,7 @@
               <v-list-item-content>
                 <v-list-item-title
                   class="display-1"
-                  style="margin-top: 20px"
+                  style="margin-top: 20px; margin-left: 20px;"
                   v-text="
                     getUserDetails.details.name +
                     ' ' +
@@ -257,6 +267,23 @@
         </v-row>
       </v-card>
     </v-container>
+
+    <!-- Snackbar -->
+    <v-snackbar
+      top
+      right
+      v-model="snackbar.show"
+      :timeout="snackbar.timeout"
+      :color="snackbar.color"
+    >
+      {{ snackbar.text }}
+
+      <template v-slot:action="{ attrs }">
+        <v-btn color="blue" text v-bind="attrs" @click="snackbar.show = false">
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
   </v-app>
 </template>
 
@@ -273,12 +300,18 @@ export default {
     return {
       update_data: {},
       selectedFile: {
-        'image': '', 
+        image: "",
       },
       dialog: false,
       img_dialog: false,
       value: [3, 1, 4, 8, 3, 1, 1, 2, 3, 2, 4, 7],
       labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      snackbar: {
+        color: "success",
+        show: false,
+        text: "Uspiješno ste promijenili fotografiju!",
+        timeout: 3000,
+      },
     };
   },
   computed: {
@@ -291,29 +324,31 @@ export default {
   },
 
   methods: {
-    uploadImage(event){
+    uploadImage(event) {
       var fileReader = new FileReader();
 
-      fileReader.readAsDataURL(event.target.files[0])
+      fileReader.readAsDataURL(event.target.files[0]);
 
       fileReader.onload = (event) => {
-        this.selectedFile.image = event.target.result
-      }
-
-      console.log(this.selectedFile)
+        this.selectedFile.image = event.target.result;
+      };
     },
 
-    onUpload(user_id){
-      /* const fd = new FormData();
-      fd.append('image', this.selectedFile, this.selectedFile.name)
-      console.log(fd); */
+    onUpload(user_id) {
       axios
         .post(`uploadImg/${user_id}`, this.selectedFile)
         .then((response) => {
-          console.log(response)
+          this.img_dialog = false;
+          this.snackbar.show = true;
         })
         .catch((err) => {
           console.log("Dogodila se greška!");
+          this.snackbar = {
+            color: "#C62828",
+            show: true,
+            text: "Nespješno postavljanje slike.",
+            timeout: 3000,
+          };
         });
     },
 
@@ -321,11 +356,11 @@ export default {
       this.dialog = true;
       // ne vuce getUSerDetails.details.neki atribut
       this.update_data = {
-        'name': getUserDetails.details.name,
-        'surname': getUserDetails.details.surname,
-        'email': getUserDetails.details.email,
-        'telefon': getUserDetails.details.telefon,
-        'obrazovanje': getUserDetails.details.obrazovanje,
+        name: getUserDetails.details.name,
+        surname: getUserDetails.details.surname,
+        email: getUserDetails.details.email,
+        telefon: getUserDetails.details.telefon,
+        obrazovanje: getUserDetails.details.obrazovanje,
       };
     },
     updateUsers(user_id) {

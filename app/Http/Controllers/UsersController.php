@@ -57,7 +57,7 @@ class UsersController extends Controller
 
         $fileName = $user->name . '_image' . '.' . $extension;
 
-        $path = public_path() . '/' . $fileName;
+        $path = public_path() . '/storage/' . $fileName;
 
         file_put_contents($path, $decoded);
 

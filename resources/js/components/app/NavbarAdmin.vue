@@ -3,8 +3,11 @@
     <v-app-bar app dark color="#1B4188">
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title class="light"
-        > <v-icon color="white" size="28">mdi-iframe</v-icon> | code<span class="font-weight-medium">SUM</span></v-toolbar-title
+      <v-toolbar-title class="light">
+        <v-icon color="white" size="28">mdi-iframe</v-icon> | code<span
+          class="font-weight-medium"
+          >SUM</span
+        ></v-toolbar-title
       >
 
       <v-spacer></v-spacer>
@@ -27,19 +30,23 @@
               <v-avatar size="100">
                 <img
                   v-bind:src="
-                    getUserDetails.img
-                      ? getUserDetails.img
+                    getUserDetails.details.image
+                      ? '/storage/' + getUserDetails.details.image
                       : 'https://iili.io/Ks0S0N.png'
                   "
                   alt="CodeSUM user"
                 />
               </v-avatar>
               <div class="d-flex flex-column align-center justify-around pa-3">
-                <span class="white--text text-h6">{{ getUserDetails.details ? getUserFullName  : ''}}</span>
+                <span class="white--text text-h6">{{
+                  getUserDetails.details ? getUserFullName : ""
+                }}</span>
                 <!--
                 <span class="white--text text-caption">{{ getUserDetails.role.type ? getUserDetails.role.type : 'Nije navedeno' }} | {{ getUserDetails.role.org ? getUserDetails.role.org : 'Nije navedno' }}</span>
                 -->
-                <span class="white--text text-subtitle-2">{{ getUserDetails.details ? sidebarUserInfo  : ''}}</span>
+                <span class="white--text text-subtitle-2">{{
+                  getUserDetails.details ? sidebarUserInfo : ""
+                }}</span>
               </div>
             </div>
           </v-container>
@@ -51,7 +58,12 @@
       <!--Links-->
       <v-list-item-group v-model="group">
         <v-list>
-          <v-list-item v-for="item in items" :key="item.title" link :to="item.to">
+          <v-list-item
+            v-for="item in items"
+            :key="item.title"
+            link
+            :to="item.to"
+          >
             <v-list-item-icon>
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-item-icon>
@@ -84,29 +96,35 @@ export default {
       items: [
         { title: "Naslovnica", icon: "mdi-view-dashboard", to: "/admin/" },
         { title: "Korisnici", icon: "mdi-account", to: "/admin/korisnici" },
-        { title: "Tečajevi", icon: "mdi-notebook-edit-outline", to: "/admin/tecajevi" },
-        { title: "Izazovi", icon: "mdi-card-text-outline" }
+        {
+          title: "Tečajevi",
+          icon: "mdi-notebook-edit-outline",
+          to: "/admin/tecajevi",
+        },
+        { title: "Izazovi", icon: "mdi-card-text-outline" },
       ],
     };
   },
   computed: {
     ...mapGetters(["getUserDetails"]),
-    sidebarUserInfo(){
+    sidebarUserInfo() {
+      let roles = [];
 
-      let roles = []
+      this.getUserDetails.details.roles.forEach((roleObj) => {
+        roles.push(roleObj.slug);
+      });
 
-      this.getUserDetails.details.roles.forEach( roleObj => {
-        roles.push(roleObj.slug)
-      })
+      if (roles.includes("admin")) return "Administrator";
 
-      if(roles.includes('admin')) return 'Administrator'
-
-      return 'Student'
-
+      return "Student";
     },
-    getUserFullName(){
-      return this.getUserDetails.details.name + ' ' + this.getUserDetails.details.surname
-    }
+    getUserFullName() {
+      return (
+        this.getUserDetails.details.name +
+        " " +
+        this.getUserDetails.details.surname
+      );
+    },
   },
   methods: {
     logout() {
@@ -115,9 +133,9 @@ export default {
       this.$router.push({ name: "Auth" });
     },
   },
-  created(){
-      this.$store.dispatch('setUserDetails')
-  }
+  created() {
+    this.$store.dispatch("setUserDetails");
+  },
 };
 </script>
 
