@@ -102,8 +102,8 @@
                       <v-avatar size="140">
                         <img
                           v-bind:src="
-                            getUserDetails.details.image
-                              ? '/storage/' + getUserDetails.details.image
+                            getUserDetails.details
+                              ? '/CodeSUM_projekt/storage/app/public/' + getUserDetails.details.image
                               : 'https://iili.io/Ks0S0N.png'
                           "
                           alt="CodeSUM user"
@@ -123,9 +123,12 @@
                   class="display-1"
                   style="margin-top: 20px; margin-left: 20px;"
                   v-text="
+                    getUserDetails.details ?
                     getUserDetails.details.name +
                     ' ' +
                     getUserDetails.details.surname
+
+                    : ''
                   "
                 ></v-list-item-title>
               </v-list-item-content>
@@ -151,25 +154,25 @@
                       >Ime:</v-col
                     >
                     <v-col cols="md-8" class="font-weight-light">{{
-                      getUserDetails.details.name
+                      getUserDetails.details ? getUserDetails.details.name : ''
                     }}</v-col>
                     <v-col cols="md-4" class="text-right font-weight-bold"
                       >Prezime:</v-col
                     >
                     <v-col cols="md-8" class="font-weight-light">{{
-                      getUserDetails.details.surname
+                      getUserDetails.details ? getUserDetails.details.surname : ''
                     }}</v-col>
                     <v-col cols="md-4" class="text-right font-weight-bold"
                       >Email:</v-col
                     >
                     <v-col cols="md-8" class="font-weight-light">{{
-                      getUserDetails.details.email
+                      getUserDetails.details ? getUserDetails.details.email : ''
                     }}</v-col>
                     <v-col cols="md-4" class="text-right font-weight-bold"
                       >Broj mobitela:</v-col
                     >
                     <v-col cols="md-8" class="font-weight-light">{{
-                      getUserDetails.details.telefon
+                      getUserDetails.details
                         ? getUserDetails.details.telefon
                         : "-"
                     }}</v-col>
@@ -177,7 +180,7 @@
                       >Obrazovanje:</v-col
                     >
                     <v-col cols="md-8" class="font-weight-light">{{
-                      getUserDetails.details.obrazovanje
+                      getUserDetails.details
                         ? getUserDetails.details.obrazovanje
                         : "-"
                     }}</v-col>
@@ -298,7 +301,9 @@ export default {
   },
   data() {
     return {
-      update_data: {},
+      update_data: {
+        name: ''
+      },
       selectedFile: {
         image: "",
       },

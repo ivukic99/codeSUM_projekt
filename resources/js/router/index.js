@@ -7,6 +7,7 @@ import Forgot from '../views/auth/Forgot.vue';
 import Reset from '../views/auth/Reset.vue';
 import BecomeMember from '../views/BecomeMember.vue';
 import Courses from '../views/Courses.vue';
+import ProgrammingLesson from '../views/app/ProgrammingLesson.vue';
 import CoursesUser from '../views/app/CoursesUser.vue';
 import Home from '../views/app/Home.vue';
 import ViewCourse from '../views/app/ViewCourse.vue';
@@ -112,6 +113,14 @@ const routes = [
         path: '/tecajevi/:tecaj_id',
         name: 'RollCourse',
         component: RollCourse,
+        meta: {
+            middleware: [Middleware.auth]
+        }
+    },
+    {
+        path: '/tecajevi/:tecaj_id/programski_zadatak/:zadatak_id',
+        name: 'ProgrammingLesson',
+        component: ProgrammingLesson,
         meta: {
             middleware: [Middleware.auth]
         }

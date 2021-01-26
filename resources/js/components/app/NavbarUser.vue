@@ -30,8 +30,8 @@
               <v-avatar size="100">
                 <img
                   v-bind:src="
-                    getUserDetails.details.image
-                      ? '/storage/' + getUserDetails.details.image
+                    getUserDetails.details
+                      ? '/CodeSUM_projekt/storage/app/public/' + getUserDetails.details.image
                       : 'https://iili.io/Ks0S0N.png'
                   "
                   alt="CodeSUM user"

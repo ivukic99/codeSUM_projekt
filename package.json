@@ -17,6 +17,7 @@
         "case-sensitive-paths-webpack-plugin": "^2.3.0",
         "cross-env": "^7.0",
         "deepmerge": "^4.2.2",
+        "file-loader": "^6.2.0",
         "font-awesome": "^4.7.0",
         "jquery": "^3.2",
         "laravel-mix": "^5.0.1",
@@ -32,11 +33,12 @@
     "dependencies": {
         "@jamescoyle/vue-icon": "^0.1.0",
         "@mdi/js": "^5.8.55",
+        "vue-codemirror": "^4.0.6",
         "vue-loading-overlay": "^3.4.2",
         "vue-loading-spinner": "^1.0.11",
         "vue-router": "^3.4.9",
         "vuetify": "^2.3.17",
-        "vuetify-loader": "^1.5.0",
+        "vuetify-loader": "^1.4.3",
         "vuex": "^3.6.0"
     }
 }
