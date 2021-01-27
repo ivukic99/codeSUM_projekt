@@ -49,7 +49,9 @@ class ProgrammingLessonController extends Controller
     return ProgrammingLesson::create([
     	'Naziv' => $request->Naziv,
     	'Opis' => $request->Opis,
-    	'Poveznica' => $request->Poveznica,
+    	'Hint' => $request->Hint,
+    	'ChallengeFunkcija' => $request->ChallengeFunkcija,
+    	'Rezultat' => $request->Rezultat,
     	'Tecaj_id' => $request->Tecaj_id
     ]);
 

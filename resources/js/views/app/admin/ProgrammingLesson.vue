@@ -8,7 +8,7 @@
 	        
 	        <v-container>
 	          <div class="d-flex justify-content-between align-center mb-5">
-	            <h3>Ažuriranje tekstualnih lekcija</h3>
+	            <h3>Ažuriranje programskih lekcija</h3>
 	              <v-btn
 	                class="mx-2"
 	                fab
@@ -121,7 +121,7 @@ export default {
         deleteProgrammingLesson(courseId){
 
             axios
-            .get(`text_lessons/delete/${courseId}`)
+            .get(`programming_lessons/delete/${courseId}`)
             .then((response) => {
               console.log(response.data)
               this.getProgrammingLesson()
