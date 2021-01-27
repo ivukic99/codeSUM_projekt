@@ -8,6 +8,7 @@ use App\User;
 use App\Category;
 use App\TextLesson;
 use App\VideoLesson;
+use App\ProgrammingLesson;
 
 class CourseController extends Controller
 {
@@ -53,6 +54,13 @@ class CourseController extends Controller
         $course = Course::where('id', $course_id)->first();
 
         return $course->hasMany(VideoLesson::class, 'Tecaj_id')->get();
+    }
+
+    public function getProgrammingLessons($course_id)
+    {
+        $course = Course::where('id', $course_id)->first();
+
+        return $course->hasMany(ProgrammingLesson::class, 'Tecaj_id')->get();
     }
 
     /**

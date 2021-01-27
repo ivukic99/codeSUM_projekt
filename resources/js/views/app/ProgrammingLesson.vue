@@ -7,8 +7,8 @@
       <v-container>
         <v-row>
           <v-col sm="12" md="12" lg="6">
-            <div class="code-text">
-              {{ codeText }}
+            <div class="code-text" id="code-text-box">
+              
             </div>
           </v-col>
           <v-col sm="12" md="12" lg="6">
@@ -47,7 +47,7 @@ export default {
     },
     data() {
       return {
-        codeText: 'LoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLorem',
+        codeText: '<p>Ovo je neki tekst</p> <br/> <p><b>Sljedeći redak</b></p>',
         code: 'function challengeFunction() {  }',
         dat: '<div onload="alert("test")">haha</div>',
         correctAnswer: false,
@@ -71,6 +71,9 @@ export default {
       script.textContent = this.code
       document.head.appendChild(script)
       */
+
+      let codeText = document.getElementById('code-text-box')
+      codeText.innerHTML = this.codeText
       
     },
 
@@ -101,6 +104,10 @@ export default {
 .CodeMirror {
   border: 1px solid #eee;
   height: 60vh;
+}
+
+.code-text{
+  padding: 12px;
 }
 
 .result-box{

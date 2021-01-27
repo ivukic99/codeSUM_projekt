@@ -17,7 +17,8 @@ class CreateProgramskiZadaciTable extends Migration
             $table->id()->unsigned();
             $table->string('Naziv', 50);
             $table->text('Opis');
-            $table->string('Poveznica',300);
+            $table->text('ChallengeFunkcija');
+            $table->string('Hint',300);
             $table->integer('Rezultat');
             $table->unsignedBigInteger('Tecaj_id');
             $table->timestamps();

@@ -17,6 +17,7 @@ import Igor from '../views/creators/Igor.vue';
 import Admin from '../views/app/admin/Admin.vue';
 import CoursesAdmin from '../views/app/admin/Courses.vue';
 import CourseAdmin from '../views/app/admin/Course.vue';
+import ProgrammingLessonAdmin from '../views/app/admin/ProgrammingLesson.vue';
 import TextLessonAdmin from '../views/app/admin/TextLesson.vue';
 import VideoLessonAdmin from '../views/app/admin/VideoLesson.vue';
 import EntranceQuiz from '../views/EntranceQuiz.vue';
@@ -161,6 +162,14 @@ const routes = [
         path: '/admin/tecajevi/:tecaj_id/video_lekcije',
         name: 'VideoLessonAdmin',
         component: VideoLessonAdmin,
+        meta: {
+            middleware: [Middleware.admin]
+        }
+    },
+    {
+        path: '/admin/tecajevi/:tecaj_id/programske_lekcije',
+        name: 'ProgrammingLessonAdmin',
+        component: ProgrammingLessonAdmin,
         meta: {
             middleware: [Middleware.admin]
         }

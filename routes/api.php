@@ -38,6 +38,7 @@ Route::get('/video_lessons/{course_id}', 'CourseController@getVideoLessons')->na
 Route::post('/video_lessons/add', 'VideoLessonController@store')->name('add_video_lessons');
 Route::get('/video_lessons/delete/{lesson_id}', 'VideoLessonController@destroy')->name('delete_video_lesson');
 Route::post('/video_lessons/save', 'VideoLessonController@update')->name('save_video_lesson');
+Route::get('/programming_lessons/{course_id}', 'CourseController@getProgrammingLessons')->name('get_programming_lessons');
 Route::get('/users', 'UsersController@index')->name('users');
 Route::post('/users/delete/{user_id}', 'UsersController@destroy')->name('users_delete');
 Route::post('/users/update/{user_id}', 'UsersController@update')->name('users_update');
