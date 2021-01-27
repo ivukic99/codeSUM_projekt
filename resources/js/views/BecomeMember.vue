@@ -96,7 +96,7 @@
 	</div>
 
 	<!--Bubbles-->
-	<ul class="bg-bubbles" style="z-index: 100">
+	<ul class="bg-bubbles" style="z-index: 100;">
 		<li></li>
 		<li></li>
 		<li></li>
