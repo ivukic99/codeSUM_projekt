@@ -120,6 +120,10 @@ export default {
       console.log(response.data)
       let data = response.data[0]
 
+      if(data.ChallengeFunkcija == null){
+        data.ChallengeFunkcija = 'function challengeFunction() {  }'
+      }
+      
       this.data.name = data.Naziv
       this.data.description = data.Opis 
       this.data.challengeFunction = data.ChallengeFunkcija
