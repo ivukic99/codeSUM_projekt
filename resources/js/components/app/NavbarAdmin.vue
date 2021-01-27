@@ -28,13 +28,13 @@
           <v-container style="height: 200px" class="d-flex justify-center">
             <div class="d-flex flex-column justify-space-around align-center">
               <v-avatar size="100">
-                <img
+                <img v-if="getUserDetails.details"
                   v-bind:src="
                     getUserDetails.details
                       ? '/CodeSUM_projekt/storage/app/public/' + getUserDetails.details.image
-                      : 'https://iili.io/Ks0S0N.png'
+                      : ''
                   "
-                  alt="CodeSUM user"
+                  alt=""
                 />
               </v-avatar>
               <div class="d-flex flex-column align-center justify-around pa-3">

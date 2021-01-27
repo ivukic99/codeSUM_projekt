@@ -33,10 +33,20 @@ class AuthController extends Controller{
 
     public function register(UserRegisterRequest $request){
 
+        $gender = $request->gender;
+
+        if($gender == 'muško'){
+            $image = 'random.png';
+        }else{
+            $image = 'random2.png';
+        }
+
         $user = User::create([
             'name' => $request->name,
             'surname' => $request->surname,
             'email' => $request->email,
+            'spol' => $gender,
+            'image' => $image,
             'password' => Hash::make($request->password),
         ]);
 

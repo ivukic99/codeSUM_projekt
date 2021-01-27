@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('image')->nullable();
             $table->string('telefon')->nullable();
             $table->string('obrazovanje')->nullable();
+            $table->enum('spol',['muško', 'žensko']);
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

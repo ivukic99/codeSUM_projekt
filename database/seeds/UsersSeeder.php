@@ -15,10 +15,22 @@ class UsersSeeder extends Seeder
     {
         User::insert([
             [
+                'name' => 'Admin', 
+                'surname' => 'Stranice', 
+                'email' => 'admin.stranice@gmail.com',
+                'password' => Hash::make("12345678"),
+                'image' => 'random.png',
+                'spol' => 'muško',
+                'created_at'=> now(),
+                'updated_at'=> now()
+            ],
+            [
                 'name' => 'Igor', 
                 'surname' => 'Vukic', 
                 'email' => 'igor.vukic8877@gmail.com',
                 'password' => Hash::make("12345678"),
+                'image' => 'random.png',
+                'spol' => 'muško',
                 'created_at'=> now(),
         		'updated_at'=> now()
             ],
@@ -27,6 +39,8 @@ class UsersSeeder extends Seeder
                 'surname' => 'Bebek', 
                 'email' => 'stanko.bebek82@gmail.com',
                 'password' => Hash::make("12345678"),
+                'image' => 'random.png',
+                'spol' => 'muško',
                 'created_at'=> now(),
         		'updated_at'=> now()
             ],

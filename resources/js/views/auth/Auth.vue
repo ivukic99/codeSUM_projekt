@@ -137,6 +137,12 @@
                                 v-model="newUser.surname"
                                 :rules="[rules.required]"
                               />
+                               <v-select
+                                v-model="newUser.gender"
+                                :items="['muško', 'žensko']"
+                                :rules="[rules.required]"
+                                label="Spol"
+                              ></v-select>
                             </v-col>
                           </v-row>
                           <v-text-field
@@ -237,6 +243,7 @@ export default {
         email: "",
         name: "",
         surname: "",
+        gender: "",
         password: "",
         rePassword: "",
       },
