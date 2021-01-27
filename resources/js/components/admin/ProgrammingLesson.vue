@@ -18,6 +18,12 @@
 	          </v-btn>
 	        </div>
 
+	        <div>
+	        	
+	        	<wysiwyg v-model="data" />
+
+	        </div>
+
        </v-container>
 
        <!--Loader-->
@@ -31,13 +37,15 @@
 </template>
 
 <script>
+import "vue-wysiwyg/dist/vueWysiwyg.css";
 import Loading from 'vue-loading-overlay';
 export default {
     components: {
-    	Loading
+    	Loading,
     },
     data(){
     	return{
+    		data : '<p>Pozdrav od <b>CodeSUM-a</b></p>',
     		name: '',
     		description: '',
     		hint: '',

@@ -12,6 +12,8 @@ import router from './router/index.js';
 import Vuetify from "../plugins/vuetify";
 import store from './store';
 import axios from "axios";
+import wysiwyg from "vue-wysiwyg";
+
 
 // axios.defaults.baseURL = 'https://studenti.sum.ba/projekti/fpmoz/2021/g2/api';
 axios.defaults.baseURL = 'http://localhost/codeSUM_projekt/public/api/';
@@ -27,6 +29,7 @@ axios.defaults.baseURL = 'http://localhost/codeSUM_projekt/public/api/';
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('App', require('./App.vue').default);
+Vue.use(wysiwyg, {});
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
