@@ -84,7 +84,7 @@
       					{{ lesson.Naziv }}
       				</div>
       				<div class="d-flex justify-end lesson-button-box">
-      					<v-btn color="#1B4188">
+      					<v-btn color="#1B4188" @click="goToRoute(lesson.id)">
       						Kreni
       					</v-btn>
       				</div>
@@ -211,7 +211,10 @@ export default {
 	    	let all_lessons = this.lessons.programming_lessons.length + this.lessons.quiz_lessons.length + this.lessons.video_lessons.length + this.lessons.text_lessons.length
 
 	    	this.remaining = all_lessons - finished_lessons
-	    }
+	    },
+      goToRoute(id){
+        this.$router.push({name: 'ProgrammingLesson', params: {'tecaj_id':this.$route.params.tecaj_id, 'zadatak_id': id }})
+      }
     },
     computed: {
 		...mapGetters([

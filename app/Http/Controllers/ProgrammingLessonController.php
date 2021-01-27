@@ -59,7 +59,7 @@ class ProgrammingLessonController extends Controller
 
     public function show($id)
     {
-
+        return response()->json(ProgrammingLesson::where('id', $id)->get());
     }
 
     /**
