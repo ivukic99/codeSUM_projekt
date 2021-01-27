@@ -41,6 +41,7 @@ Route::post('/video_lessons/save', 'VideoLessonController@update')->name('save_v
 Route::get('/programming_lessons/{course_id}', 'CourseController@getProgrammingLessons')->name('get_programming_lessons');
 Route::post('/programming_lessons/add', 'ProgrammingLessonController@store')->name('add_programming_lessons');
 Route::get('/programming_lessons/delete/{course_id}', 'ProgrammingLessonController@destroy')->name('delete_programming_lesson');
+Route::post('/programming_lessons/save', 'ProgrammingLessonController@update')->name('save_programming_lesson');
 Route::get('/users', 'UsersController@index')->name('users');
 Route::post('/users/delete/{user_id}', 'UsersController@destroy')->name('users_delete');
 Route::post('/users/update/{user_id}', 'UsersController@update')->name('users_update');

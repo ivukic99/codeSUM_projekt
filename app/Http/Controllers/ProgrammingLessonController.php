@@ -83,7 +83,7 @@ class ProgrammingLessonController extends Controller
     public function update(Request $request)
     {
         $lesson = ProgrammingLesson::find($request->Lekcija_id);
-        return $lesson->update(['Naziv' => $request->Naziv, 'Opis' => $request->Opis, 'Poveznica' => $request->Poveznica]);
+        return $lesson->update(['Naziv' => $request->Naziv, 'Opis' => $request->Opis, 'ChallengeFunkcija' => $request->ChallengeFunkcija, 'Hint' => $request->Hint, 'Rezultat' => $request->Rezultat]);
     }
 
     /**

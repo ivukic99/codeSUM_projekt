@@ -2,7 +2,20 @@
     <div>
     	<NavbarAdmin />
 
-    	<AddEditProgrammingLesson v-if="addEdit" :addEdit="addEdit" @goBack="changeComponent"/>
+    	<AddEditProgrammingLesson 
+    	v-if="addEdit" 
+    	:addEdit="addEdit" 
+    	@goBack="changeComponent"
+    	:isEditing="isEditing"
+    	:name="name"
+    	:description="description"
+    	:challengeFunction="challengeFunction"
+    	:hint="hint"
+    	:result="result"
+    	:id="lesson_id"
+    	:reset="reset"
+    	:getProgrammingLesson="getProgrammingLesson"
+    	/>
 
     	<div v-else>
 	        
@@ -42,11 +55,10 @@
 	                  <tr>
 	                    <td>{{row.item.Naziv}}</td>
 	                    <td>{{row.item.Opis}}</td>
-	                    <td>{{row.item.Poveznica}}</td>
 	                    <td>{{row.item.created_at}}</td>
 	                    <td>{{row.item.updated_at}}</td>
 	                    <td>
-	                        <v-btn class="mx-2" fab dark small color="success" @click="editProgrammingLesson(row.item.Naziv, row.item.Opis, row.item.Poveznica, row.item.id)">
+	                        <v-btn class="mx-2" fab dark small color="success" @click="editProgrammingLesson(row.item.Naziv, row.item.Opis, row.item.ChallengeFunkcija, row.item.Hint, row.item.Rezultat, row.item.id)">
 	                            <v-icon dark>mdi-pen</v-icon>
 	                        </v-btn>
 	                    </td>
@@ -87,8 +99,10 @@ export default {
             data: [],
             name: '',
             description: '',
-            hyperlink: '',
-            lesson_id: null,
+            challengeFunction: '',
+            hint: '',
+            result: '',
+            lesson_id: 0,
             addEdit: false,
             isEditing: false,
             fullPage: true,
@@ -109,13 +123,17 @@ export default {
 
     },
     methods:{
-        editProgrammingLesson(name, description, hyperlink, id){
+        editProgrammingLesson(name, description, challengeFunction, hint, result, id){
             this.isEditing = true
 
             this.name = name
             this.description = description
-            this.hyperlink = hyperlink
-            this.id = id
+            this.challengeFunction = challengeFunction
+            this.hint = hint
+            this.result = result
+            this.lesson_id = id
+
+            this.addEdit = true
 
         },
         deleteProgrammingLesson(courseId){
@@ -144,10 +162,17 @@ export default {
           console.log("Dogodila se greška!")
         });
       },
-      resetForm(){
-        this.name = '',
-        this.description = '',
-        this.hyperlink = ''
+      reset(){
+        this.isEditing = false
+
+        this.name = ''
+        this.description = ''
+        this.challengeFunction = ''
+        this.hint = ''
+        this.result = ''
+        this.lesson_id = 0
+
+        this.addEdit = false
       },
       closeDialog(){
         this.resetForm()
