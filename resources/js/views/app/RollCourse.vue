@@ -9,7 +9,7 @@
       		<v-col class="d-flex justify-center" sm="12" md="12" lg="4">
 	      		<div class="top-box d-flex flex-column justify-center align-center">
 	      			<div class="top-container-text">
-	      				236
+	      				{{ numberOfUsers }}
 	      			</div>
 	      			<div class="top-container-subtext">
 	      				Broj upisanih korisnika
@@ -20,7 +20,7 @@
       		<v-col class="d-flex justify-center" m="12" md="12" lg="4">
 	      		<div class="top-box d-flex flex-column justify-center align-center">
 	      			<div class="top-container-text">
-	      				10 h
+	      				{{ hours }}
 	      			</div>
 	      			<div class="top-container-subtext">
 	      				Ukupno vrijeme trajanja
@@ -31,7 +31,7 @@
       		<v-col class="d-flex justify-center" m="12" md="12" lg="4">
 	      		<div class="top-box d-flex flex-column justify-center align-center">
 	      			<div class="top-container-text">
-	      				Početnik
+	      				{{ level }}
 	      			</div>
 	      			<div class="top-container-subtext">
 	      				Razina tečaja
@@ -183,6 +183,9 @@ export default {
     	return{
     		lessons: [],
     		finishedLessons: [],
+        numberOfUsers: '',
+        hours: '',
+        level: '',
     		dataReady: false,
     		isFinished: false,
     		remaining: null
@@ -223,6 +226,18 @@ export default {
 
     },
     created(){
+      axios
+      .get(`course_info/${this.$route.params.tecaj_id}`)
+      .then((response) => {
+        console.log(response.data)
+        this.numberOfUsers = response.data.broj_korinsika
+        this.level = response.data.razina
+        this.hours = response.data.vrijeme + ' h'
+      })
+      .catch((err) => {
+        console.log("Dogodila se greška!")
+      });
+      
     	axios
       .post('enrolled_course', {Tecaj_id: this.$route.params.tecaj_id})
       .then((response) => {

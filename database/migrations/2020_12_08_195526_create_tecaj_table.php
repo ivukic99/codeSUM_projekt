@@ -17,6 +17,8 @@ class CreateTecajTable extends Migration
             $table->id()->unsigned();
             $table->string('Naziv', 100);
             $table->text('Opis');
+            $table->integer('Vrijeme');
+            $table->enum('Razina',['Početnička', 'Srednja', 'Napredna']);
             $table->unsignedBigInteger('Kategorije_id');
             $table->unsignedBigInteger('Kreator_id');
             $table->timestamps();

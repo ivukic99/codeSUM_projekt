@@ -26,6 +26,7 @@ Route::post('/register', 'Api\AuthController@register')->name('register');
 Route::post('/forgot', 'ForgotController@forgot')->name('forgot');
 Route::post('/reset', 'ForgotController@reset')->name('reset');
 Route::get('/entrance_quiz/{id}', 'EntranceQuizController@show')->name('show');
+Route::get('/course_info/{id}', 'CourseInfoController@index')->name('course_info');
 Route::get('/courses', 'CourseController@index')->name('courses');
 Route::post('/courses/add', 'CourseController@store')->name('course_add');
 Route::post('/courses/delete/{tecaj_id}', 'CourseController@destroy')->name('course_delete');

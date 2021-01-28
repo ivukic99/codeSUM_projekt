@@ -17,6 +17,8 @@ class CoursesSeeder extends Seeder
         		'Naziv' => 'JavaScript',
         		'Opis' => 'Ovo je tečaj za početnike u kojem su obrađene osnove programiranja u programskom jeziku JavaScript.',
         		'Kategorije_id'=> 5,
+                'Vrijeme'=> 5,
+                'Razina'=> 'Početnička',
         		'Kreator_id' => 1,
         		'created_at'=> now(),
         		'updated_at'=> now()
@@ -25,6 +27,8 @@ class CoursesSeeder extends Seeder
         		'Naziv' => 'Baze podataka',
         		'Opis' => 'Ovo je tečaj za početnike u kojem su obrađene osnove baza podataka.',
         		'Kategorije_id'=> 3,
+                'Vrijeme'=> 5,
+                'Razina'=> 'Početnička',
         		'Kreator_id' => 1,
         		'created_at'=> now(),
         		'updated_at'=> now()
@@ -33,6 +37,8 @@ class CoursesSeeder extends Seeder
         		'Naziv' => 'Algoritmi',
         		'Opis' => 'Ovo je tečaj za početnike u kojem su obrađene osnove jednostavnih algoritama.',
         		'Kategorije_id'=> 2,
+                'Vrijeme'=> 5,
+                'Razina'=> 'Početnička',
         		'Kreator_id' => 1,
         		'created_at'=> now(),
         		'updated_at'=> now()

@@ -85,6 +85,8 @@ class CourseController extends Controller
         $course = Course::create([
             'Naziv' => $request->Naziv,
             'Opis' => $request->Opis,
+            'Razina' => $request->Razina,
+            'Vrijeme' => $request->Vrijeme,
             'Kategorije_id' => $request->Kategorija_id,
             'Kreator_id' => $request->Kreator_id
         ]);

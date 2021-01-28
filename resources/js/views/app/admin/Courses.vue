@@ -54,6 +54,26 @@
               <v-col
                 cols="12"
               >
+                <v-select
+                  v-model="newCourseLevel"
+                  :items="['Početnička', 'Srednja', 'Napredna']"
+                  item-text="Naziv"
+                  item-value="id"
+                  label="Odaberite razinu tečaja*"
+                ></v-select>
+              </v-col>
+              <v-col
+                cols="12"
+              >
+                <v-text-field
+                  v-model="newCourseTime"
+                  label="Vrijeme trajanja u satima*"
+                  required
+                ></v-text-field>
+              </v-col>
+              <v-col
+                cols="12"
+              >
               <v-textarea
                 v-model="newCourseDescription"
                 color="teal"
@@ -157,6 +177,8 @@ import 'vue-loading-overlay/dist/vue-loading.css';
         newCourseName: '',
         newCourseDescription: '',
         newCourseCategory: '',
+        newCourseLevel: '',
+        newCourseTime: '',
         categories: [],
         isLoading: false,
         fullPage: true
@@ -183,6 +205,8 @@ import 'vue-loading-overlay/dist/vue-loading.css';
           'Naziv': this.newCourseName,
           'Opis': this.newCourseDescription,
           'Kategorija_id': this.newCourseCategory,
+          'Razina': this.newCourseLevel,
+          'Vrijeme': this.newCourseTime,
           'Kreator_id': this.getUserDetails.details.id
         }
 
@@ -203,12 +227,16 @@ import 'vue-loading-overlay/dist/vue-loading.css';
           this.newCourseName = ''
           this.newCourseDescription = ''
           this.newCourseCategory= ''
+          this.newCourseLevel= ''
+          this.newCourseTime= ''
         })
         .catch((err) => {
           console.log(response)
           this.newCourseName = ''
           this.newCourseDescription = ''
           this.newCourseCategory= ''
+          this.newCourseLevel= ''
+          this.newCourseTime= ''
         });
 
         

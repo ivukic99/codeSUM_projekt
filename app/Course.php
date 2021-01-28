@@ -14,7 +14,7 @@ class Course extends Model
 {
     protected $table = 'tecaj';
 
-    protected $fillable = ['Naziv', 'Opis', 'Kategorije_id', 'Kreator_id','created_at', 'updated_at'];
+    protected $fillable = ['Naziv', 'Opis', 'Razina', 'Vrijeme', 'Kategorije_id', 'Kreator_id','created_at', 'updated_at'];
 
     public function getNumberOfUsers($course_id){
     	$course = Course::where('id', $course_id)->first();
