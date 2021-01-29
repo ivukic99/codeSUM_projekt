@@ -31,7 +31,7 @@
                 <img v-if="getUserDetails.details"
                   v-bind:src="
                     getUserDetails.details
-                      ? '/CodeSUM_projekt/storage/app/public/' + getUserDetails.details.image
+                      ? '/storage/' + getUserDetails.details.image
                       : ''
                   "
                   alt=""
