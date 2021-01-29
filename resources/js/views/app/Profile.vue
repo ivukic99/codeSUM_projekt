@@ -103,7 +103,7 @@
                         <img
                           v-bind:src="
                             getUserDetails.details
-                              ? '/CodeSUM_projekt/storage/app/public/' +
+                              ? '/storage/app/public/' +
                                 getUserDetails.details.image
                               : ''
                           "
