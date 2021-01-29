@@ -31,7 +31,7 @@
                 <img v-if="getUserDetails.details"
                   v-bind:src="
                     getUserDetails.details
-                      ? 'https://studenti.sum.ba/storage/app/public/' + getUserDetails.details.image
+                      ? '/CodeSUM_projekt/storage/app/public/' + getUserDetails.details.image
                       : ''
                   "
                   alt=""
