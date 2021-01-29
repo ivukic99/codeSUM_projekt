@@ -103,7 +103,7 @@
                         <img
                           v-bind:src="
                             getUserDetails.details
-                              ? '/storage/' +
+                              ? 'https://studenti.sum.ba/storage/app/public/' +
                                 getUserDetails.details.image
                               : ''
                           "
