@@ -103,7 +103,7 @@
                         <img
                           v-bind:src="
                             getUserDetails.details
-                              ? '/storage/app/public/' +
+                              ? '/public/storage' +
                                 getUserDetails.details.image
                               : ''
                           "
