@@ -54,4 +54,5 @@ Route::post('/enroll_course', 'CourseUserController@create')->name('enroll_cours
 Route::post('/enrolled_course', 'EnrolledCourseController@index')->name('enrolled_course');
 Route::post('/enrolled_course/finished_lessons', 'EnrolledCourseController@getFinishedLessons')->name('enrolled_course_finished_lessons');
 Route::post('/uploadImg/{user_id}', 'UsersController@uploadImage')->name('uploadImg');
+Route::get('/download/{user_id}', 'PDFController@generatePDF')->name('download');
 

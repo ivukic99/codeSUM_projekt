@@ -18,3 +18,12 @@ Route::get('/{any}', function () {
     return view('welcome');
 })->where('any', '.*');
 
+Route::get('generate-pdf','PDFController@generatePDF');
+
+/* Route::get('generate-pdf', function(){
+    return view('myPDF');
+
+    $pdf = PDF::loadView('pdf.myPDF');
+    return $pdf->download('certifikat.pdf')
+}); */
+
