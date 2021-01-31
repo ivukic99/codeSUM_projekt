@@ -50,10 +50,7 @@ class AuthController extends Controller{
             'password' => Hash::make($request->password),
         ]);
 
-        if(substr($request->email, -3, ) == "com"){
-            $studentUserID = DB::table('roles')->where('slug', 'admin')->get('id')->first();
-            $user->roles()->attach($studentUserID);
-        }else if(substr($request->email, -2, ) == "ba"){
+        if(substr($request->email, 10, ) == "@fpmoz.sum.ba"){
             $studentUserID = DB::table('roles')->where('slug', 'student')->get('id')->first();
             $user->roles()->attach($studentUserID);
         }else{

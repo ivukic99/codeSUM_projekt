@@ -31,7 +31,7 @@
     <div>
         <h2>Promijenite lozinku</h2>
         <p>Ako se zaboravili lozinku ili je želite promjeniti, kliknite na link ispod i započnite kreiranje nove lozinke.</p><br>
-        <a href="http://127.0.0.1:8000/reset/{{$token}}" target="_blank">Promijeni lozinku</a> <br>
+        <a href="http://127.0.0.1:8000/#/reset/{{$token}}" target="_blank">Promijeni lozinku</a> <br>
     </div>
     <div >
         <p class="footer">Ako niste zatražili promijenu lozinke, možete sigurno zanemariti ovaj email. Samo osoba s pristupom vašoj email adresi može promijeniti

@@ -71,6 +71,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import Navbar from '../../components/app/NavbarUser.vue';
 import { codemirror } from 'vue-codemirror';
 import 'codemirror/lib/codemirror.css';
@@ -143,6 +144,9 @@ export default {
     challengeScript.setAttribute('id', 'challengeScript')
     document.head.appendChild(challengeScript)
   },
+  computed:{
+    ...mapGetters(['getUserDetails'])
+  },
    methods:{
    	saveCode(){
  		  let challengeScript = document.getElementById('challengeScript')
@@ -213,9 +217,21 @@ export default {
     this.data.challengeFunction = this.saveFunction
    },
    saveResult(){
-    console.log(this.score)
-   }  
-   },
+     let userId = this.getUserDetails.details.id
+      axios
+    .post('programming_lessons/done', { 'user_id': userId, 'zadatak_id': parseInt(this.$route.params.zadatak_id), 'Tecaj_id': this.$route.params.tecaj_id })
+    .then((response) => {
+      console.log(response.data)
+      this.$router.push({name:'RollCourse'})
+    })
+    .catch((err) => {
+      console.log("Dogodila se greška!")
+    });
+
+    this.$router.go(-1)
+    },
+   }
+
 
 }
 </script scoped>

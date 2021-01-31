@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Course;
+use App\FinishedLesson;
 use App\ProgrammingLesson;
 
 class ProgrammingLessonController extends Controller
@@ -16,6 +17,14 @@ class ProgrammingLessonController extends Controller
     public function index()
     {
     	return ProgrammingLesson::get(['id', 'Naziv', 'Opis', 'ChallengeFunkcija', 'Hint', 'Rezultat', 'Tecaj_id', 'created_at', 'updated_at']);
+    }
+
+    public function lessonDone(Request $request){
+        return FinishedLesson::create([
+            'User_id' => $request->user_id,
+            'Programski_zadaci_id' => $request->zadatak_id,
+            'Tecaj_id' => $request->Tecaj_id
+        ]);
     }
 
     /**

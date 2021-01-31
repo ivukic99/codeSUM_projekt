@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Course;
 use App\TextLesson;
+use App\FinishedLesson;
 
 class TextLessonController extends Controller
 {
@@ -16,6 +17,14 @@ class TextLessonController extends Controller
     public function index()
     {
     	return TextLesson::get(['id', 'Naziv', 'Opis', 'Poveznica', 'created_at', 'updated_at']);
+    }
+
+    public function lessonDone(Request $request){
+        return FinishedLesson::create([
+            'User_id' => $request->user_id,
+            'Pismene_lekcije_id' => $request->zadatak_id,
+            'Tecaj_id' => $request->Tecaj_id
+        ]);
     }
 
     /**
@@ -57,7 +66,7 @@ class TextLessonController extends Controller
 
     public function show($id)
     {
-
+        return TextLesson::where('id', $id)->get()->first();
     }
 
     /**

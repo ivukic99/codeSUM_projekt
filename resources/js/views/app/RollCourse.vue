@@ -80,7 +80,7 @@
               {{ lesson.Naziv }}
             </div>
             <div class="d-flex justify-end lesson-button-box">
-              <v-btn color="#1B4188" @click="goToRoute(lesson.id)">
+              <v-btn color="#1B4188" @click="goToRoute(lesson.id, 'ProgrammingLesson')">
                 Kreni
               </v-btn>
             </div>
@@ -142,7 +142,7 @@
               {{ lesson.Naziv }}
             </div>
             <div class="d-flex justify-end lesson-button-box">
-              <v-btn color="#1B4188"> Kreni </v-btn>
+              <v-btn color="#1B4188" @click="goToRoute(lesson.id, 'TextLesson')"> Kreni </v-btn>
             </div>
           </div>
         </div>
@@ -172,7 +172,7 @@
               {{ lesson.Naziv }}
             </div>
             <div class="d-flex justify-end lesson-button-box">
-              <v-btn color="#1B4188"> Kreni </v-btn>
+              <v-btn color="#1B4188" @click="goToRoute(lesson.id, 'VideoLesson')"> Kreni </v-btn>
             </div>
           </div>
         </div>
@@ -264,9 +264,9 @@ export default {
 
       this.remaining = all_lessons - finished_lessons;
     },
-    goToRoute(id) {
+    goToRoute(id, routeName) {
       this.$router.push({
-        name: "ProgrammingLesson",
+        name: routeName,
         params: { tecaj_id: this.$route.params.tecaj_id, zadatak_id: id },
       });
     },

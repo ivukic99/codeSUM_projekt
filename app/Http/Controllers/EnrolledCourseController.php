@@ -39,7 +39,7 @@ class EnrolledCourseController extends Controller
     		}elseif(!is_null($lesson->Kviz_id)){
     			array_push($quiz_lessons, $lesson->Kviz_id);
     		}elseif(!is_null($lesson->Programski_zadaci_id)){
-    			array_push($programming_lessons, $lesson->Kviz_id);
+    			array_push($programming_lessons, $lesson->Programski_zadaci_id);
     		}
     	}
 

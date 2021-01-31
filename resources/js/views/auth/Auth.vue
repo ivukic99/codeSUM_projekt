@@ -32,9 +32,6 @@
                           </v-btn>
                         </div>
                         <br />
-                        <h4 class="text-center mlt-4">
-                          Unesite svoje podatke za prijavu
-                        </h4>
                         <v-form>
                           <v-text-field
                             label="Email"
@@ -113,9 +110,6 @@
                             <v-icon color="#1B4188">fab fa-youtube</v-icon>
                           </v-btn>
                         </div>
-                        <h4 class="text-center mt-4">
-                          Unesite svoje podatke za registraciju
-                        </h4>
                         <v-form ref="registerForm" :value="formValid">
                           <v-row>
                             <v-col>

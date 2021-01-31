@@ -8,6 +8,8 @@ import Reset from '../views/auth/Reset.vue';
 import BecomeMember from '../views/BecomeMember.vue';
 import Courses from '../views/Courses.vue';
 import ProgrammingLesson from '../views/app/ProgrammingLesson.vue';
+import TextLesson from '../views/app/TextLesson.vue';
+import VideoLesson from '../views/app/VideoLesson.vue';
 import CoursesUser from '../views/app/CoursesUser.vue';
 import Home from '../views/app/Home.vue';
 import ViewCourse from '../views/app/ViewCourse.vue';
@@ -122,6 +124,22 @@ const routes = [
         path: '/tecajevi/:tecaj_id/programski_zadatak/:zadatak_id',
         name: 'ProgrammingLesson',
         component: ProgrammingLesson,
+        meta: {
+            middleware: [Middleware.auth]
+        }
+    },
+    {
+        path: '/tecajevi/:tecaj_id/tekstualni_zadatak/:zadatak_id',
+        name: 'TextLesson',
+        component: TextLesson,
+        meta: {
+            middleware: [Middleware.auth]
+        }
+    },
+    {
+        path: '/tecajevi/:tecaj_id/video_zadatak/:zadatak_id',
+        name: 'VideoLesson',
+        component: VideoLesson,
         meta: {
             middleware: [Middleware.auth]
         }

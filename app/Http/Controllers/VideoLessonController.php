@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\VideoLesson;
+use App\FinishedLesson;
 
 class VideoLessonController extends Controller
 {
@@ -15,6 +16,14 @@ class VideoLessonController extends Controller
     public function index()
     {
     	return VideoLesson::get(['id', 'Naziv', 'Opis', 'Poveznica', 'created_at', 'updated_at']);
+    }
+
+    public function lessonDone(Request $request){
+        return FinishedLesson::create([
+            'User_id' => $request->user_id,
+            'Video_lekcije_id' => $request->zadatak_id,
+            'Tecaj_id' => $request->Tecaj_id
+        ]);
     }
 
     /**
@@ -56,7 +65,7 @@ class VideoLessonController extends Controller
 
     public function show($id)
     {
-
+        return VideoLesson::where('id', $id)->get()->first();
     }
 
     /**
