@@ -103,7 +103,7 @@
                         <img
                           v-bind:src="
                             getUserDetails.details
-                              ? '/public/storage/' +
+                              ? ' https://studenti.sum.ba/projekti/fpmoz/2021/g2/storage/' +
                                 getUserDetails.details.image
                               : ''
                           "
