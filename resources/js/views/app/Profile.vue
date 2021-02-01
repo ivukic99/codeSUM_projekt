@@ -121,7 +121,7 @@
                   style="margin-top: 20px; margin-left: 20px"
                   v-text="
                     getUserDetails.details
-                      ? getUserDetails.details.id +
+                      ? getUserDetails.details.name +
                         ' ' +
                         getUserDetails.details.surname
                       : ''
