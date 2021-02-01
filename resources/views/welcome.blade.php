@@ -36,6 +36,6 @@
             <App />
         </div>
 
-        <script src="{{ asset('js/app.js?version=11') }}"></script>
+        <script src="{{ asset('js/app.js?version=12') }}"></script>
     </body>
 </html>

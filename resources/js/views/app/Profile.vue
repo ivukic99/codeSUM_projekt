@@ -61,10 +61,6 @@
                   label="Obrazovanje"
                   v-model="update_data.obrazovanje"
                 ></v-text-field>
-                <!-- <v-file-input
-                  label="Pohranite svoju fotografiju"
-                  v-model="update_data.image"
-                ></v-file-input> -->
               </v-col>
             </v-row>
           </v-container>
@@ -105,7 +101,7 @@
                             getUserDetails.details
                               ? ' https://studenti.sum.ba/projekti/fpmoz/2021/g2/storage/' +
                                 getUserDetails.details.image
-                              : ''
+                              : getUserDetails.details.spol = 'muško' ? 'random.png' : 'random2.png'
                           "
                           alt="CodeSUM user"
                         />
@@ -125,7 +121,7 @@
                   style="margin-top: 20px; margin-left: 20px"
                   v-text="
                     getUserDetails.details
-                      ? getUserDetails.details.name +
+                      ? getUserDetails.details.id +
                         ' ' +
                         getUserDetails.details.surname
                       : ''
@@ -136,7 +132,12 @@
           </v-col>
 
           <v-col cols="12" class="text-right">
-            <v-btn fab dark color="indigo" @click="onClick()">
+            <v-btn
+              fab
+              dark
+              color="indigo"
+              @click="onClick(getUserDetails.details.id)"
+            >
               <v-icon dark> mdi-pencil </v-icon>
             </v-btn>
           </v-col>
@@ -305,6 +306,10 @@ export default {
     return {
       update_data: {
         name: "",
+        surname: "",
+        email: "",
+        telefon: "",
+        obrazovanje: "",
       },
       selectedFile: {
         image: "",
@@ -359,16 +364,23 @@ export default {
         });
     },
 
-    onClick() {
-      this.dialog = true;
-      // ne vuce getUSerDetails.details.neki atribut
-      this.update_data = {
-        name: getUserDetails.details.name,
-        surname: getUserDetails.details.surname,
-        email: getUserDetails.details.email,
-        telefon: getUserDetails.details.telefon,
-        obrazovanje: getUserDetails.details.obrazovanje,
-      };
+    onClick(user_id) {
+      axios
+        .get(`user/${user_id}`)
+        .then((response) => {
+          console.log("---------------------", response.data);
+          this.update_data = {
+            name: response.data.name,
+            surname: response.data.surname,
+            email: response.data.email,
+            telefon: response.data.telefon,
+            obrazovanje: response.data.obrazovanje,
+          };
+          this.dialog = true;
+        })
+        .catch((err) => {
+          console.log("Dogodila se greška!");
+        });
     },
     updateUsers(user_id) {
       axios
