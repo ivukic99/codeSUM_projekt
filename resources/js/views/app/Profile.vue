@@ -99,9 +99,9 @@
                         <img
                           v-bind:src="
                             getUserDetails.details
-                              ? ' https://studenti.sum.ba/projekti/fpmoz/2021/g2/storage/' +
+                              ? 'https://studenti.sum.ba/projekti/fpmoz/2021/g2/storage/' +
                                 getUserDetails.details.image
-                              : getUserDetails.details.spol = 'muško' ? 'random.png' : 'random2.png'
+                              : ''
                           "
                           alt="CodeSUM user"
                         />
