@@ -117,6 +117,7 @@ export default {
       });
 
       if (roles.includes("admin")) return "Administrator";
+      else if (roles.includes("external_user")) return "External User";
 
       return "Student";
     },
