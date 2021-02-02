@@ -36,9 +36,9 @@ class AuthController extends Controller{
         $gender = $request->gender;
 
         if($gender == 'muško'){
-            $image = 'random.png';
+            $image = 'random_image.png';
         }else{
-            $image = 'random2.png';
+            $image = 'random2_image.png';
         }
 
         $user = User::create([
