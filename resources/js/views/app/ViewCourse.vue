@@ -2,7 +2,11 @@
   <div>
       <Navbar />
 
-      <h1>Ovo je samo prikaz tečaja.</h1>
+      <div class="child-container">
+        <v-img
+          src="https://i.ibb.co/3FhJxVq/undraw-work-in-progress-uhmv.png"
+        ></v-img>
+      </div>
       
   </div>
 </template>
@@ -17,6 +21,10 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.child-container {
+  text-align: justify;
+  justify-content: center;
+  align-items: center;
+}
 </style>

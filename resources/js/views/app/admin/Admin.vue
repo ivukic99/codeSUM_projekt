@@ -1,30 +1,36 @@
 <template>
-    <v-app>
-        <NavbarAdmin />
-        <v-container>
-            <h5>Ovaj dio je još uvijek u izradi!</h5>
+  <v-app>
+    <NavbarAdmin />
+    <v-container>
+      <div class="child-container">
+        <v-img
+          src="https://i.ibb.co/3FhJxVq/undraw-work-in-progress-uhmv.png"
+        ></v-img>
+      </div>
 
-            <!--{{ getUserDetails }}-->
-        </v-container>
-    </v-app>
+      <!--{{ getUserDetails }}-->
+    </v-container>
+  </v-app>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import NavbarAdmin from '../../../components/app/NavbarAdmin';
+import { mapGetters } from "vuex";
+import NavbarAdmin from "../../../components/app/NavbarAdmin";
 export default {
-    name: "Admin",
-    components: {
-        NavbarAdmin,
-    },
-    computed: {
-        ...mapGetters([
-            'getUserDetails'
-        ])
-    }
-}
+  name: "Admin",
+  components: {
+    NavbarAdmin,
+  },
+  computed: {
+    ...mapGetters(["getUserDetails"]),
+  },
+};
 </script>
 
-<style>
-
+<style scoped>
+.child-container {
+  text-align: justify;
+  justify-content: center;
+  align-items: center;
+}
 </style>

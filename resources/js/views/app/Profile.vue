@@ -225,9 +225,9 @@
 
           <v-row>
             <v-col cols="md-12">
-              <v-card outlined>
+              <v-card outlined max-width="1020">
                 <v-card-title>Tečajevi</v-card-title>
-                <v-sheet class="mx-auto">
+                <v-sheet class="mx-auto"> 
                   <v-slide-group class="pa-4" show-arrows>
                     <v-slide-item
                       v-for="(value, i) in getCourseDetails"

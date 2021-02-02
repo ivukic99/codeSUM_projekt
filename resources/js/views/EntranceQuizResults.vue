@@ -3,7 +3,7 @@
       <Navbar />
 
       <article>
-	    <img src="https://i.imgur.com/EHgyT11.png" alt="phones"/>
+	    <img src="https://i.ibb.co/dQ3Lq8w/Website-HTML-code-browser-view-printed-on-white-paper-closeup-view.jpg" alt="phones"/>
 	    <div class="text">
 	        <h3 style="color: #1B4188;">CodeSUM</h3>
 	        <h1>{{ heading }}</h1>
