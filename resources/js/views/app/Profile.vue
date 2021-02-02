@@ -82,7 +82,7 @@
 
     <v-container>
       <v-card class="mx-auto">
-        <v-img height="200" src="https://iili.io/FKX3RS.png"></v-img>
+        <v-img height="200" src="https://i.ibb.co/TtdqrDx/FPMOZ-bg.png"></v-img>
         <v-row style="margin: 2.5%; position: absolute; top: 125px">
           <v-col cols="md-12">
             <v-list-item>
@@ -226,7 +226,7 @@
           <v-row>
             <v-col cols="md-12">
               <v-card outlined>
-                <v-card-title>Tečajevi koje pohađam</v-card-title>
+                <v-card-title>Tečajevi</v-card-title>
                 <v-sheet class="mx-auto">
                   <v-slide-group class="pa-4" show-arrows>
                     <v-slide-item

@@ -31,7 +31,7 @@
                 <img v-if="getUserDetails.details"
                   v-bind:src="
                     getUserDetails.details
-                      ? ' https://studenti.sum.ba/projekti/fpmoz/2021/g2/storage/' + getUserDetails.details.image
+                      ? 'https://studenti.sum.ba/projekti/fpmoz/2021/g2/storage/' + getUserDetails.details.image
                       : ''
                   "
                   alt=""
